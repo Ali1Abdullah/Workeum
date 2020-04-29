@@ -1,0 +1,65 @@
+<app-main>
+
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" style="position: relative;">
+        <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+            <img src="{{slide.img}}" alt="" style="width:100%;max-height: 650px;">
+            <h1 style="position: absolute;top:500px;left:30px">Your Perfect Palce To Work</h1>
+        </div>
+    </ngx-slick-carousel>
+
+<div class="container">
+    <h1 class="myblue offer" style="margin-top:60px">What we offer</h1>
+    <div class="itemset" [ngsRevealSet]="{ reset:false}"  [ngsSelector]="'.item'">
+        <div class="item item1">
+            <div class="row" style="margin-top:50px">
+                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-left: 30px;">
+                    <ul style="list-style-type:none;">
+                        <li>High-Speed Wifi</li>
+                        <li>Free For First 100 Gb</li>
+                        <li>Only 5$ For Every 10 Extra Gbs</li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <img src="../../../assets/images/router.png">
+                </div>
+            </div>
+        </div>
+        <div class="item item2">
+            <div class="row" style="margin-top:50px">
+                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-left: 30px;">
+                    <img src="../../../assets/images/printer.jpg" style="border-radius: 40px;">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <ul style="list-style-type:none;text-align: center;">
+                        <li>Printer</li>
+                        <li>Scanner</li>
+                        <li>Photocopier</li>
+                        <li>Projector</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="item item3">
+            <div class="row" style="margin-top:50px">
+                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-left: 30px;">
+                    <ul style="list-style-type:none;">
+                        <li>Meeting Room</li>
+                        <li>Shared Room</li>
+                        <li>Kitchen</li>
+                        <li>Toilet</li>
+                        
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <img src="../../../assets/images/meeting.jpg" style="width: 100%;border-radius: 40px;">
+                </div>
+            </div>
+        </div>
+        <div class="item item4">Item 4</div>
+        <div class="item5">Item 5 (will not be animated)</div>
+    </div>
+</div>
+     
+
+</app-main>

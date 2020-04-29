@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+
+
+@font-face{
+  font-family: MuseoSans_300;
+  src: url('./assets/fonts/\/MuseoSans-300.otf');
+}
+body{
+        font-family:  MuseoSans_300;
+}
+.myblue{
+  color:#1248c3
+}
+
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  src: url("./assets/fonts/Roboto-Bold.ttf");
+  font-weight: 700;
+}

@@ -1,0 +1,72 @@
+.align-beside{
+    display: flex;
+    justify-content: center;
+}
+.band{
+    margin-top: 23px;
+    font-size: 35px;
+    color: #1248c3;
+    font-weight: 700;
+
+}
+
+.logo{
+  width: 40px;
+  height: 25px;
+  margin: 20px;
+  margin-top: 30px;
+}
+
+.top-nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: #FAFAFA;
+    height: 100px;
+    position: fixed;
+    top:0;
+    z-index: 200;
+    width: 100%;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.038),
+    0 10px 10px rgba(0, 0, 0, 0.10)
+  }
+  @media only screen and (max-width: 1006px) {
+    .top-nav{
+
+    }
+    .content1{
+      margin-top: 0px;
+    }
+  
+  }
+  
+  
+  .botn{
+  background-color: #fff;
+  font-family: Poppins SemiB;
+  border: none;
+  color: #2D96CE;
+  font-weight: bold;
+  margin: 10px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-decoration: none;
+  border-radius: 40px;
+  
+  
+  }
+  
+  .active-link{
+  background-color:#2D96CE;
+  color: #fff;
+  }
+  
+  .social-media{
+    width:40px;
+    margin-right: 13px;
+    margin-top: 5px;
+  
+  }
+  

@@ -1,0 +1,49 @@
+import { AppService } from './app.service';
+import { HttpService } from './http.service';
+import { map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { Main } from '../models/main.model';
+import { Post } from '../models/post.model';
+export interface MainServiceType{
+  getDataFromApi(params:any,action:string, type:any):any;
+  addToApi(params:any,action:string, type:any):any;
+  updateItemInApi(params:any,action:string, type:any):any;
+  deleteItemInApi(params:any,action:any);
+}
+@Injectable({
+  providedIn: 'root'
+})
+export class MainService implements MainServiceType {
+  constructor(public http:HttpService) { }
+
+  getDataFromApi(params:any,action:string, type: any) {
+      AppService.appLog(['getDataFromApi params:',params]);
+       return this.http.getDataFromServer(action,params).pipe(map((response:any)=>{
+         AppService.appLog(['getDataFromApi',response]);
+         return Main.renderModels(type, response)
+       }));
+  }
+
+
+  addToApi(params:any,action:string, type: any) {
+    return this.http.postDataToServer(action,params).pipe(map((response:any)=>{
+      AppService.appLog(['addToApi',response]);
+      return Main.renderModels(type, response)
+    }));
+  }
+
+  updateItemInApi(params:any,action:string, type: any) {
+    return this.http.putDataToServer(action,params).pipe(map((response:any)=>{
+      AppService.appLog(['updateItemInApi',response]);
+      return Main.renderModels(type, response)
+    }));
+  }
+
+  deleteItemInApi(params:any,action:any){
+    return this.http.deteteDataFromServer(action,params).pipe(map((response:any)=>{
+      return true;
+    }));
+  }
+
+
+}
