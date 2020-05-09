@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { HttpService } from './services/http.service';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
-
+import { EventsComponent } from './pages/events/events.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -14,9 +17,12 @@ import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http'
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
+    
   ],
   providers: [HttpService,HttpClient],
   bootstrap: [AppComponent]
