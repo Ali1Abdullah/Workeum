@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ContactusComponent } from './contactus.component';
 import { ContactusRoutingModule } from './contactus-routing.module';
 import { LayoutModule } from 'src/app/layout/layout.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,6 +12,8 @@ import { LayoutModule } from 'src/app/layout/layout.module';
   imports: [
     CommonModule,
     ContactusRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     LayoutModule
   ]
 })

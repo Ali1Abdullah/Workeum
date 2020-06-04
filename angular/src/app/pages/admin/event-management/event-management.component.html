@@ -1,0 +1,33 @@
+
+
+<section class="content" style="margin-top:20px">
+  <div class="container" style="margin-top:10px">
+    <div class="row" style="width: 80%;margin: 0 auto">
+     
+        <mat-card style="max-width:200px;margin-bottom: 20px;" class="btn btn-default">
+          <a style="cursor: pointer;text-decoration: none;" routerLink="/admin/add-event">
+          Add New Event
+        </a>
+        </mat-card>
+      
+      <form [formGroup]="dateForm">
+        <div style="margin-bottom: 20px;">
+          <div class="input-group" style="width: 300px;">
+            <input type="date" class="form-control" style="margin-bottom: 20px;height: 40px;" formControlName="date">
+            <button type="button" style="cursor: pointer;height: 40px;" class="btn btn-primary" (click)="gotoDate()">Go
+              To Date</button>
+          </div>
+        </div>
+      </form>
+
+
+      <full-calendar #fullcalendaradmin [plugins]="calendarPlugins" [editable]="true" [events]="calendarEvents"
+        eventTextColor='#fff' [defaultView]="'dayGridMonth'" [header]="{
+            left: 'prev,next today',
+            center: 'title',
+            right: ''
+            }" [dir]="'ltr'" [events]="calendarEvents" (eventClick)="onEventClick($event)">
+      </full-calendar>
+    </div>
+  </div>
+</section>

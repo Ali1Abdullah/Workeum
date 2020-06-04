@@ -43,8 +43,8 @@
   
   
   .botn{
-  background-color: #fff;
-  font-family: Poppins SemiB;
+  background-color: #FAFAFA;
+
   border: none;
   color: #2D96CE;
   font-weight: bold;
@@ -57,7 +57,19 @@
   
   
   }
-  
+  .Login{
+    background-color: #2D96CE;
+    border: none;
+    color: #FAFAFA;
+    font-weight: bold;
+    margin: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;
+    border-radius: 40px;
+    
+  }
   .active-link{
   background-color:#2D96CE;
   color: #fff;

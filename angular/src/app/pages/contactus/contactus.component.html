@@ -1,22 +1,23 @@
 <app-main>
     <section style="margin-top:120px;">
         <div class="container">
-            <form>
+            <form [formGroup]="contactForm" >
                 <div class="row">
+                    <h3 style="margin:0 auto;font-weight: bold;">SEND US A MESSAGE</h3>
+                </div>
+                <div class="row" style="margin-top: 30px;">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <label for="FirstName">First Name</label>
-                            <input type="text" class="form-control" id="FirstName" 
-                                placeholder="Enter Your First Name">
-                    
+                            <input type="text" class="form-control" formControlName="FirstName" id="FirstName" placeholder="Enter Your First Name">
+
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <label for="LastName">Last Name</label>
-                            <input type="text" class="form-control" id="LastName"
-                                placeholder="Enter Your Last Name">
-        
+                            <input type="text" class="form-control" formControlName="LastName" id="LastName" placeholder="Enter Your Last Name">
+
                         </div>
                     </div>
                 </div>
@@ -24,30 +25,31 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                            <input type="email" class="form-control" formControlName="Email" id="email" aria-describedby="emailHelp"
                                 placeholder="Enter Your Email">
-                     
+
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <label for="PhoneNumber">Phone Number</label>
-                            <input type="text" class="form-control" id="PhoneNumber"
+                            <input type="text" class="form-control" id="PhoneNumber" formControlName="PhoneNumber"
                                 placeholder="Enter Your Phone Number">
-                
+
                         </div>
                     </div>
                 </div>
+                <div class="row" style="margin-top: 20px;"><label for="content" style="margin:0 auto">Tell Us Everything</label></div>
                 <div class="row">
-                    <div class="form-group" style="margin:0 auto; width: 80%;">
-                        <label for="contact">Tell Us Everything</label>
-                        <textarea style=" width: 80%;resize: none;" id="contact" ></textarea>
-            
-                    </div>
-       
-       
+                    <textarea formControlName="Content" style=" margin:0 auto; width: 80%;height: 180px;resize: none;padding: 10px;" placeholder="Enter Your Message" id="content"></textarea>
                 </div>
-            </form>
+                <div class="row" style="margin-top: 20px;">
+                    <button class="btn btn-primary" style="border-radius: 15px;margin:0 auto;" (click)="onSubmit()">Submit</button>
+                </div>
+
+
+
+        </form>
         </div>
     </section>
 </app-main>

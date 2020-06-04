@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common'
 import { EventsRoutingModule } from './events-routing.module';
 import { LayoutModule } from 'src/app/layout/layout.module';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-import {NgsRevealModule} from 'ngx-scrollreveal';
 import { EventsComponent } from './events.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,8 +17,6 @@ import { MaterialModule } from '../../material.module';
     CommonModule,
     EventsRoutingModule,
     LayoutModule,
-    SlickCarouselModule,
-    NgsRevealModule,
     FullCalendarModule,
     FormsModule,
     ReactiveFormsModule,

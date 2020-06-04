@@ -1,0 +1,89 @@
+
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="!shouldRun">
+    <mat-toolbar color="primary" style="background-color:  #2D96CE;border-bottom:1px rgba(255,255,255,0.5) solid"  class="example-toolbar mobile">
+      
+        <div class="row" style="width: 100%;">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <a (click)="snav.toggle()" style="cursor: pointer;color: #fff;font-size: 1.5rem;">
+              <i class="fa fa-bars" aria-hidden="true"></i></a>
+        </div>
+
+ 
+          </div>
+     
+  
+    </mat-toolbar>
+  
+  
+  
+    <mat-sidenav-container class="example-sidenav-container a" style="background-color: #fff;"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <!-- make it side not over if you want to  withdraw -->
+    <!-- initial : over side -->
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'side' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list style="width: 250px;background-color:  #2D96CE;">
+  
+
+          <section class="section">
+
+          
+          
+            <nav >
+            <ul data-widget="treeview" style="list-style: none;" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+          
+                <li  >
+                  <a  routerLink="/admin">Companies Management</a>
+                </li>
+                <li   >
+                  <a  routerLink="/admin/employee" >Members Management</a>
+                </li>
+          
+                <li  >
+                  <a routerLink="/admin/events">Events Management</a>
+                </li>
+  
+                <li  >
+                  <a routerLink="/admin/messages">Check Messages</a>
+                </li>
+          
+          
+        
+          
+                <li  >
+                  <a (click)="snav.toggle()" routerLink="/contact">Contact Us</a>
+                </li>
+          
+          
+            </ul>
+          </nav>
+          </section>
+          
+  
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content style="
+        position: relative;
+        z-index: 1;
+        display: block;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    ">
+
+           <section class="content1">
+            <router-outlet></router-outlet>
+  
+          </section> 
+  
+
+      </mat-sidenav-content>
+  
+    </mat-sidenav-container>
+  
+  
+  </div>
+  

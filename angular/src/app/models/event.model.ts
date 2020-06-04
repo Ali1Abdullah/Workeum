@@ -8,7 +8,6 @@ export interface EventType {
    EventDate: string;
    EventStart: string;
    EventEnd:string;
-   EventLocation: string;
    EventImage: string;
 }
 
@@ -19,7 +18,6 @@ export class Event extends Main implements EventType {
    public EventDate: string;
    public EventStart: string;
    public EventEnd: string;
-   public EventLocation: string;
    public EventImage: string;
 
    constructor(event: EventType) {
@@ -27,7 +25,6 @@ export class Event extends Main implements EventType {
       this.EventTitle = event.EventTitle;
       this.EventDescription = event.EventDescription;
       this.EventDate = event.EventDate;
-      this.EventLocation = event.EventLocation;
       this.EventStart= event.EventStart;
       this.EventEnd = event.EventEnd;
       this.EventImage = event.EventImage;

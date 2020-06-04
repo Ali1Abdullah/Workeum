@@ -25,17 +25,17 @@ export class MainService implements MainServiceType {
   }
 
 
-  addToApi(params:any,action:string, type: any) {
-    return this.http.postDataToServer(action,params).pipe(map((response:any)=>{
+  addToApi(formData:any,action:string) {
+    return this.http.postDataToServer(action,formData).pipe(map((response:any)=>{
       AppService.appLog(['addToApi',response]);
-      return Main.renderModels(type, response)
+      return  (response)
     }));
   }
 
-  updateItemInApi(params:any,action:string, type: any) {
-    return this.http.putDataToServer(action,params).pipe(map((response:any)=>{
+  updateItemInApi(formData:any,action:string) {
+    return this.http.putDataToServer(action,formData).pipe(map((response:any)=>{
       AppService.appLog(['updateItemInApi',response]);
-      return Main.renderModels(type, response)
+      return (response)
     }));
   }
 

@@ -16,6 +16,22 @@ const routes: Routes = [
     path: 'contact',
     loadChildren: () => import('./pages/contactus/contactus.module').then(m => m.ContactusModule)
   },
+  {
+    path: 'products',
+    loadChildren: () => import('./pages/products/products.module').then(m => m.ProductsModule)
+  },
+  {
+    path: 'companyform',
+    loadChildren: () => import('./pages/company-form/company-form.module').then(m => m.CompanyFormModule)
+  },
+  {
+    path: 'employeefrom',
+    loadChildren: () => import('./pages/employee-form/employee-form.module').then(m => m.EmployeeFormModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
+  },
 ];
 
 @NgModule({

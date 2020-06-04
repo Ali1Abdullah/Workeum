@@ -11,9 +11,6 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
-
-
-
     putDataToServer(action: string, dataParams: any) {
         return this.http.put(HttpService.serverApiUrl + action, dataParams).pipe(map((response: any) => response.json()))
     }
@@ -36,8 +33,9 @@ export class HttpService {
     }
 
 
-    postDataToServer(action: string, dataParams: any) {
-        return this.http.post(HttpService.serverApiUrl + action, dataParams).pipe(map((response: any) => response.json()))
+    postDataToServer(action: string,formData) {
+        console.log("action",action)
+        return this.http.post(HttpService.serverApiUrl + action, JSON.stringify(formData)).pipe(map((response: any) => response))
 
     }
 

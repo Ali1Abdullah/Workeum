@@ -1,0 +1,74 @@
+
+
+.help-block{
+    color: red;
+    font-family: MuseoSans_300;
+  }
+  input.ng-invalid.ng-touched{
+    border-color:red;
+  }
+  textarea.ng-invalid.ng-touched{
+    border-color:red;
+  }
+
+  p {
+    font-family: Lato;
+  }
+  .dropzone {
+    min-height: 351px;
+    min-width: 100%;
+    display: table;
+    width: 100%;
+    background-color: #eee;
+    border: dotted 1px #aaa;
+  }
+  
+  .text-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  .centered {
+    font-family: sans-serif;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align:center;
+  }
+  .custom-file-upload{
+    border: 1px solid #ccc;
+      display: inline-block;
+      padding: 7px 12px;
+      cursor: pointer;
+      width: 250px;
+  }
+  .bordered{
+    border: 1px solid #ccc;
+  
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  
+  }
+  li {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  ::placeholder {
+      font-family: MuseoSans_300;
+  }
+  label{
+    font-family: MuseoSans_300;
+    font-size: large;
+  }
+  input{
+    font-family: MuseoSans_300;
+  }

@@ -23,7 +23,7 @@ import { EventPopupComponent } from './event-popup/event-popup.component';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
-  @ViewChild("myElemEvents", {static:true}) MyProp: ElementRef;
+
   //full calendar specified , static : true is obligatory
   @ViewChild("fullcalendar", { static: true })
   calendarComponent: FullCalendarComponent;
@@ -74,7 +74,7 @@ export class EventsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.MyProp.nativeElement.scrollIntoView(0,0);
+   
     //defining the dateForm to read the date
     this.dateForm = new FormGroup({
       date: new FormControl(null)
@@ -119,7 +119,6 @@ export class EventsComponent implements OnInit {
         event: clickedEvent.event.id
       }
     });
-    // this.userData.changeSelectedEventId(clickedEvent.event.id);
   }
 
 }

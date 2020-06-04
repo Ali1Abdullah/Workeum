@@ -1,0 +1,70 @@
+<div class="container">
+    <h2>Event Details</h2>
+    <form [formGroup]="eventForm">
+        <section class="mat-typography">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="EventTitle">Event <Title></Title></label>
+                        <input type="text" class="form-control" id="EventTitle" formControlName="EventTitle"
+                            placeholder="Please Enter Event Title">
+                        <span *ngIf="!eventForm.get('EventTitle').valid && eventForm.get('EventTitle').touched"
+                            class="help-block">Please enter a valid Event Title</span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="EventDate">Event Date</label>
+                        <input type="date" class="form-control" id="EventDate" formControlName="EventDate">
+                        <span *ngIf="!eventForm.get('EventDate').valid  && eventForm.get('EventDate').touched"
+                            class="help-block">Please enter a valid Event Date</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="EventDescription">Event Description</label>
+                <textarea class="form-control" style="resize:none" formControlName="EventDescription"
+                    id="EventDescription" rows="5" placeholder="Please Enter Event's Description"></textarea>
+                <span *ngIf="!eventForm.get('EventDescription').valid && eventForm.get('EventDescription').touched"
+                    class="help-block">Please enter a valid Description</span>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                        <label for="EventStart">Event Start Time </label>
+                        <input type="time" class="form-control" formControlName="EventStart" id="EventStart"
+                            (change)="checkTime()">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-sm-6 col-xs-6">
+                    <div class="form-group">
+                        <label for="EventEnd">Event End Time </label>
+                        <input type="time" class="form-control" formControlName="EventEnd" id="EventEnd"
+                            (change)="checkTime()">
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="row bordered" style="margin-top: 20px;">
+
+
+                <div class="col-lg-6 col-sm-12 ">
+
+
+                    <img *ngIf="Image" [src]="Image" width="80px" height="100px"><br />
+                    <input type="file" class="custom-file-upload" (change)="onFileChanged($event)">
+
+                    <button *ngIf="Image" (click)="ResetImage()" class="btn btn-danger">Reset Image</button>
+                </div>
+
+            </div>
+
+        </section>

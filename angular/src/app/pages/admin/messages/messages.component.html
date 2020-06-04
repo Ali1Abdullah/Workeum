@@ -1,0 +1,22 @@
+<mat-accordion>
+
+    <div *ngFor="let msg of messages">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{msg.FirstName}} {{msg.LastName}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{msg.Email}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-card>
+          <p *ngIf="msg.PhoneNumber != 0">PhoneNumber: {{msg.PhoneNumber}}</p>
+          <p>{{msg.Content}}</p>
+      </mat-card>
+    </mat-expansion-panel>
+</div>
+  </mat-accordion>
+
+
+
