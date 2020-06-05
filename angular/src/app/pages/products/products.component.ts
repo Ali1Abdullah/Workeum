@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ProductsMemberPopupComponent } from './products-member-popup/products-member-popup.component';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  onReserve(){
+    this.dialog.open(ProductsMemberPopupComponent,{
+      width:'53%',
+      height:'28%'
+    })
   }
 
 }

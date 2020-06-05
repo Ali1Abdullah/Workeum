@@ -11,6 +11,7 @@
 body{
         font-family:  MuseoSans_300;
 }
+
 .myblue{
   color:#1248c3
 }
@@ -29,4 +30,9 @@ body{
   overflow-x: sc;
   background-color: #2D96CE;
   -webkit-overflow-scrolling: touch;
+}
+
+ .mat-button-toggle-label-content {
+  line-height: 25px !important;
+  padding: 0 0px !important;
 }

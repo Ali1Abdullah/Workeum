@@ -3,7 +3,7 @@ import { HttpService } from './http.service';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Main } from '../models/main.model';
-import { Post } from '../models/post.model';
+
 export interface MainServiceType{
   getDataFromApi(params:any,action:string, type:any):any;
   addToApi(params:any,action:string, type:any):any;
