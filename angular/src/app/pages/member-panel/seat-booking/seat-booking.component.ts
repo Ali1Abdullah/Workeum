@@ -12,6 +12,7 @@ export class SeatBookingComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+ 
 
     let json = [
       { seatId: 3, name: "mousa" },

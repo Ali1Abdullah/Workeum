@@ -33,8 +33,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
   },
   {
-    path: 'seat-booking',
-    loadChildren: () => import('./pages/seats-booking/seats-booking.module').then(m => m.SeatsBookingModule)
+    path: 'member-panel',
+    loadChildren: () => import('./pages/member-panel/member-panel.module').then(m => m.MemberPanelModule)
   },
 ];
 

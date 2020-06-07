@@ -1,0 +1,161 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+  
+  }
+  
+  h1.example-app-name {
+    margin-left: 8px;
+  }
+  
+  .example-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+  }
+  
+  .example-is-mobile .example-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+  }
+  .logoutPosition{
+    position: absolute;
+    top:8px;
+    right: 10px;
+    z-index: 1;
+  }
+  .logOutButton{
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .containerd {
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+  }
+  
+  .change .bar2 {opacity: 0;}
+  
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
+  
+  
+  @media only screen and (min-width: 1007px) {
+
+    .content1{
+      margin-top: 10px;
+      padding: 20px;
+    }
+  
+  }
+  
+  .top-nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    height: 100px;
+    position: fixed;
+    border-bottom-right-radius: 45px;
+    z-index: 200;
+    width: 100%;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 10px 10px rgba(0, 0, 0, 0.12)
+  }
+  @media only screen and (max-width: 1006px) {
+    .top-nav{
+  display: none
+    }
+    .content1{
+      margin-top: 0px;
+    }
+  
+  }
+  
+  
+  .botn{
+  background-color: #fff;
+  font-family: Poppins SemiB;
+  border: none;
+  color: #2D96CE;
+  font-weight: bold;
+  margin: 10px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-decoration: none;
+  border-radius: 40px;
+  
+  
+  }
+  
+  .active-link{
+  background-color:#2D96CE;
+  color: #fff;
+  }
+  
+  .social-media{
+    width:40px;
+    margin-right: 13px;
+    margin-top: 5px;
+  
+  }
+  
+  
+  .section .brand{
+    text-align: center;
+    color: white;
+  }
+  .section .flex-column {
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+  }
+  .section ul{
+      margin-bottom: 0;
+      padding-left: 0;
+      list-style: none;
+  }
+  .section a {
+    color: white;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 10px 40px;
+    display: block;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s;
+  }
+  .section a:hover {
+      transform: translateX(10px);
+    }
+  

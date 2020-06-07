@@ -21,5 +21,9 @@ func main() {
 
 	Router.HandleFunc("/api/messages", controller.HandleGetMessages)
 	Router.HandleFunc("/api/messages/post", controller.HandlePostMessage)
+
+	Router.HandleFunc("/api/reservations/reserve", controller.HandlePostReservation)
+	Router.HandleFunc("/api/reservations/{startDate}/{endDate}", controller.HandleGetReservations)
+	Router.HandleFunc("/api/reservations/delete/{id}", controller.HandleDeleteReservation)
 	log.Fatal(http.ListenAndServe(":3001", Router))
 }
