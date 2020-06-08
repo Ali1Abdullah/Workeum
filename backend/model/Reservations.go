@@ -19,8 +19,10 @@ type Reservations struct {
 }
 
 func GetReservations(startDate string, endDate string) Reservations {
+	fmt.Println(startDate)
+	fmt.Println(endDate)
 	reservations := Reservations{}
-	layout := "2000-01-01"
+	layout := "2006-01-02"
 	start, err := time.Parse(layout, startDate)
 	end, err := time.Parse(layout, endDate)
 
@@ -29,7 +31,8 @@ func GetReservations(startDate string, endDate string) Reservations {
 	("StartDate"> $1 AND "StartDate" < $2)`
 
 	rows, err := db.Query(sqlStmt, start, end)
-
+	fmt.Println(start)
+	fmt.Println(end)
 	defer rows.Close()
 	if err != nil {
 		log.Fatal(err)

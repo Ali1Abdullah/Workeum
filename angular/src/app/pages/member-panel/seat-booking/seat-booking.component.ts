@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MainService } from 'src/app/services/main.service';
+import { Reservation } from 'src/app/models/reservation.model';
 @Component({
   selector: 'app-seat-booking',
   templateUrl: './seat-booking.component.html',
@@ -9,20 +10,10 @@ export class SeatBookingComponent implements OnInit {
   seats1: any[]
   seats2: any[]
   seats3: any[]
-  constructor() { }
+  reservations: any[]
+  constructor(private mainService: MainService) { }
 
   ngOnInit(): void {
- 
-
-    let json = [
-      { seatId: 3, name: "mousa" },
-      { seatId: 4, name: "ali" },
-      { seatId: 6, name: "mhmd" },
-      { seatId: 12, name: "ghassan" },
-      { seatId: 20, name: "ghassan" }
-    ]
-
-
 
 
     this.seats1 = [
@@ -59,83 +50,52 @@ export class SeatBookingComponent implements OnInit {
       { Id: 27, reserved: false }
     ]
 
-    json.forEach(obj => {
-      if(obj.seatId<=9){
-        this.seats1.forEach(seat => {
-          if (obj.seatId == seat.Id) {
-            seat.reserved = true
-          }
-        })
-      }
-      else if(obj.seatId > 9 && obj.seatId <=18 ){
-        this.seats2.forEach(seat => {
-          if (obj.seatId == seat.Id) {
-            seat.reserved = true
-          }
-        })
-      }
-      else{
-        this.seats3.forEach(seat => {
-          if (obj.seatId == seat.Id) {
-            seat.reserved = true
-          }
-        })
-      }
-   
-   
-    })
 
   }
 
   chooseDate(){
-    `SELECT * from public."Reservations" WHERE 
-    ("startDate"< '2020-03-05' AND "endDate" > '2020-03-05') OR
-    ("startDate"> '2020-03-05' AND "startDate" < '2020-03-10')
-    `
-    let json = [
-      { seatId: 7, name: "mousa" },
-      { seatId: 8, name: "ali" },
-      { seatId: 14, name: "mhmd" },
-      { seatId: 11, name: "ghassan" },
-      { seatId: 25, name: "ghassan" }
-    ]
+    this.mainService.getDataFromApi('','api/reservations/'+'2020-03-05'+ '/'+ '2020-03-10', Reservation).subscribe((reservations)=>{
+      console.log(['reservations',reservations]);
+      this.reservations = reservations
+      this.seats1.forEach(seat=>{
+        seat.reserved = false
+      })
+      this.seats2.forEach(seat=>{
+        seat.reserved = false
+      })
+      this.seats3.forEach(seat=>{
+        seat.reserved = false
+      })
+      this.reservations.forEach(obj => {
+            if(obj.SeatId<=9){
+              this.seats1.forEach(seat => {
+            
+                if (obj.SeatId == seat.Id) {
+                  seat.reserved = true
+                 
+                }
+              })
+            }
+            else if(obj.SeatId > 9 && obj.SeatId <=18 ){
+              this.seats2.forEach(seat => {
+                if (obj.SeatId == seat.Id) {
+                  seat.reserved = true
+                }
+              })
+            }
+            else{
+              this.seats3.forEach(seat => {
+                if (obj.SeatId == seat.Id) {
+                  seat.reserved = true
+                }
+              })
+            }
+         
+         
+          })
+    });
 
-this.seats1.forEach(seat=>{
-  seat.reserved = false
-})
-this.seats2.forEach(seat=>{
-  seat.reserved = false
-})
-this.seats3.forEach(seat=>{
-  seat.reserved = false
-})
-    json.forEach(obj => {
-      if(obj.seatId<=9){
-        this.seats1.forEach(seat => {
-      
-          if (obj.seatId == seat.Id) {
-            seat.reserved = true
-           
-          }
-        })
-      }
-      else if(obj.seatId > 9 && obj.seatId <=18 ){
-        this.seats2.forEach(seat => {
-          if (obj.seatId == seat.Id) {
-            seat.reserved = true
-          }
-        })
-      }
-      else{
-        this.seats3.forEach(seat => {
-          if (obj.seatId == seat.Id) {
-            seat.reserved = true
-          }
-        })
-      }
-   
-   
-    })
+
   }
 
 
