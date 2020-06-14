@@ -15,7 +15,7 @@ export class HttpService {
         return this.http.put(HttpService.serverApiUrl + action, dataParams).pipe(map((response: any) => response.json()))
     }
     deteteDataFromServer(action: string, dataParams: any) {
-        return this.http.delete(HttpService.serverApiUrl + action, dataParams).pipe(map((response: any) => response.json()))
+        return this.http.delete(HttpService.serverApiUrl + action, dataParams)
 
     }
     postFormDataToServer(action: string, formData) {

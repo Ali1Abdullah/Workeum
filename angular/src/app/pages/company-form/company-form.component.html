@@ -41,11 +41,12 @@
                   </div>
             
             </div>
+            <form  [formGroup]="companyForm">
             <div class="row" style="padding-top: 170px;">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <label for="Name">Company Name</label>
-                        <input type="text" class="form-control" id="CompanyName" placeholder="Enter Your Company Name">
+                        <input type="text" class="form-control" id="CompanyName" formControlName="CompanyName" placeholder="Enter Your Company Name">
 
                     </div>
                 </div>
@@ -53,6 +54,7 @@
                     <div class="form-group">
                         <label for="FounderName">Founder Name</label>
                         <input type="text" class="form-control" id="FounderName"
+                        formControlName="FounderName"
                             placeholder="Enter Company's Founder Name">
 
                     </div>
@@ -63,6 +65,7 @@
                     <div class="form-group">
                         <label for="EmailAddress">Email Address</label>
                         <input type="text" class="form-control" id="EmailAddress"
+                        formControlName="Email"
                             placeholder="Enter Your Email Address">
 
                     </div>
@@ -70,7 +73,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <label for="PhoneNumber">Phone Number</label>
-                        <input type="text" class="form-control" id="PhoneNumber" placeholder="Enter Your Phone Number">
+                        <input type="text" class="form-control" formControlName="PhoneNumber" id="PhoneNumber" placeholder="Enter Your Phone Number">
                     </div>
                 </div>
             </div>
@@ -79,7 +82,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <label for="BusinessType">Business Type</label>
-                        <select class="custom-select form-control" formControlName="SelectedStakeholder">
+                        <select class="custom-select form-control" formControlName="BusinessType">
                             <!-- <select class="custom-select form-control" formControlName="SelectedStakeholder"  >
                         <option *ngFor="let o of StakeholderOptions;" value="{{o.StakeholderId}}" >{{o.StakeholderName}}</option>
                       </select> -->
@@ -95,6 +98,7 @@
                     <div class="form-group">
                         <label for="Others">Others: </label>
                         <input type="text" class="form-control" id="Others"
+                        formControlName="Others"
                             placeholder="Specify Business Type If You Chose Others">
                     </div>
                 </div>
@@ -103,23 +107,24 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <label for="Password">Password</label>
-                        <input type="text" class="form-control" id="Password" placeholder="Enter Password">
+                        <input type="text" class="form-control" formControlName="Password" id="Password" placeholder="Enter Password">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <label for="ConfirmPassword">Confirm Password</label>
-                        <input type="text" class="form-control" id="ConfirmPassword" placeholder="Confirm Your Password">
+                        <input type="text" class="form-control" formControlName="ConfirmPassword" id="ConfirmPassword" placeholder="Confirm Your Password">
                     </div>
                 </div>
             </div>
 
             <div class="row" style="text-align: right;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: right;">
-                    <button class="btn btn-primary" style="border-radius: 5px;">Submit</button>
+                    <button class="btn btn-primary" style="border-radius: 5px;" (click)="onSubmit()">Submit</button>
                 </div>
             </div>
-
+        </form>
         </div>
+
     </section>
 </app-main>

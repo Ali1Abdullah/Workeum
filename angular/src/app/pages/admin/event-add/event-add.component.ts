@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-event-add',
@@ -25,7 +26,7 @@ export class EventAddComponent implements OnInit {
   timeValid: boolean = false;
   uploadForm: FormGroup;
   constructor(
-
+    private mainService: MainService,
     private formBuilder: FormBuilder,
 
   ) { }
@@ -44,30 +45,13 @@ export class EventAddComponent implements OnInit {
       EventDate: new FormControl(null, Validators.required),
       EventDescription: new FormControl(null, Validators.required),
       EventStart: new FormControl(this.date),
-      EventEnd: new FormControl(null, Validators.required),
-      EventUrl: new FormControl(null, Validators.required)
+      EventEnd: new FormControl(null, Validators.required)
     });
 
   }
 
 
-  //to validate the dates (end date should be larger than start date)
-  checkDates() {
-    this.eventForm.controls["EventEndDate"].value <
-      this.eventForm.controls["EventStartDate"].value
-      ? (this.datesValid = false)
-      : (this.datesValid = true);
 
-    if (
-      new Date(this.eventForm.controls["EventStartDate"].value).getTime() <
-      this.today.getTime()
-    ) {
-      this.datesFuture = false;
-    } else {
-      this.datesFuture = true;
-    }
-    //to check the session date when cahnging dates 
-  }
 
   //to check if the session time is valid (ending time > starting time)
   checkTime() {
@@ -108,5 +92,12 @@ export class EventAddComponent implements OnInit {
   //to reset image
   ResetImage() {
     this.Image = null;
+  }
+
+
+  onSubmit(){
+    this.mainService.addToApi(this.eventForm.value,'api/events/add').subscribe(num=>{
+      console.log(num)
+    })
   }
 }
