@@ -16,6 +16,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGrigPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { EventManagementPopupComponent } from './event-management-popup/event-management-popup.component';
+import { MainService } from 'src/app/services/main.service';
+import { Event } from 'src/app/models/event.model';
 
 
 @Component({
@@ -36,8 +38,6 @@ export class EventManagementComponent implements OnInit {
   
   //storing the events shown in the calendar
   calendarEvents: EventInput[] = [
-    { id: 1, title: 'event 1', date: '2020-04-29' },
-    { id:2 ,title: 'event 2', date: '2020-05-10' }
   ];
   // using plugins to interact with the calendar
   calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
@@ -46,34 +46,35 @@ export class EventManagementComponent implements OnInit {
   //to prevent entering in an infinite loop (intializing data once)
   initialized = false;
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public mainService: MainService
   ) {
     this.calendarEvents =  [
-      { id: 1, title: 'event 1', date: '2020-04-29' },
-      { id:2 ,title: 'event 2', date: '2020-05-10' }
     ];
 
     //getting data of events from api
-    // this.eventshttp.getAllEvents().subscribe((data: any) => {
-    //   this.events = data;
-    //   // looping inside events array to provide the calendar component the data in a comprehensible manner (id, title, start, allDay, end)
-    //   this.events.forEach(e => {
-    //     let calendarevent = {
-    //       startEditable: false,
-    //       id: e.EventId,
-    //       title: e.EventName,
-    //       start: new Date(e.EventStartDate).getTime(),
-    //       allDay: true,
-    //       end: new Date(e.EventEndDate).getTime() + 99999999
-    //     };
-    //     this.eventsCalendar.push(calendarevent);
-    //   });
-    //   //calling the loadEvents Function as soon as the data are stored
-      // this.loadEvents();
-    // });
+    
+    this.mainService.getDataFromApi('','api/events',Event).subscribe((data: any) => {
+      this.events = data;
+      console.log(this.events)
+      // looping inside events array to provide the calendar component the data in a comprehensible manner (id, title, start, allDay, end)
+      this.events.forEach(e => {
+        let calendarevent = {
+          startEditable: false,
+          id: e.EventId,
+          title: e.EventTitle,
+          start: new Date(e.EventDate).getTime(),
+          allDay: true,
+        };
+        this.eventsCalendar.push(calendarevent);
+      });
+      //calling the loadEvents Function as soon as the data are stored
+      this.loadEvents();
+    });
   }
 
   ngOnInit() {
+
     //defining the dateForm to read the date
     this.dateForm = new FormGroup({
       date: new FormControl(null)
@@ -91,10 +92,7 @@ export class EventManagementComponent implements OnInit {
   //used to load the events of the calendar
   loadEvents() {
     //to store events in the calendar
-    this.calendarEvents =  [
-      { id: 1, title: 'event 1', date: '2020-04-29' },
-      { id:2 ,title: 'event 2', date: '2020-05-10' }
-    ];
+    this.calendarEvents =  this.eventsCalendar
   
     this.calendarApi.removeAllEventSources(); //obligatory
     this.calendarApi.addEventSource(this.calendarEvents); //obligatory

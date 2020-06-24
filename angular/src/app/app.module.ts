@@ -10,6 +10,8 @@ import { EventsComponent } from './pages/events/events.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MaterialModule } from './material.module';
+import { AdminAuthService } from './services/admin-auth.service';
+import { AuthGuardService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { MaterialModule } from './material.module';
     MaterialModule
     
   ],
-  providers: [HttpService,HttpClient],
+  providers: [HttpService,HttpClient, AdminAuthService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

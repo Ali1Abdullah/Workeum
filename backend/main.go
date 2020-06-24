@@ -31,9 +31,11 @@ func main() {
 	Router.HandleFunc("/api/companies/edit", controller.HandleUpdateCompany)
 	Router.HandleFunc("/api/companies/image", controller.UploadCompanyImageHandler)
 
+	Router.HandleFunc("/api/members", controller.HandleGetMembers)
 	Router.HandleFunc("/api/members/add", controller.HandleMemberSignup)
 	Router.HandleFunc("/api/members/edit", controller.HandleUpdateMember)
 	Router.HandleFunc("/api/members/delete/{id}", controller.HandleDeleteMember)
+	Router.HandleFunc("/api/member/image/{id}", controller.UploadMemberImageHandler)
 
 	Router.HandleFunc("/api/events", controller.HandleGetEvents)
 	Router.HandleFunc("/api/events/add", controller.HandleCreateEvent)

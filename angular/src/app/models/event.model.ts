@@ -22,6 +22,7 @@ export class Event extends Main implements EventType {
 
    constructor(event: EventType) {
       super(event);
+      this.EventId = event.EventId
       this.EventTitle = event.EventTitle;
       this.EventDescription = event.EventDescription;
       this.EventDate = event.EventDate;

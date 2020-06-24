@@ -36,6 +36,10 @@ const routes: Routes = [
     path: 'member-panel',
     loadChildren: () => import('./pages/member-panel/member-panel.module').then(m => m.MemberPanelModule)
   },
+  {
+    path: 'login-member',
+    loadChildren: () => import('./pages/login-member/login-member.module').then(m => m.LoginMemberModule)
+  },
 ];
 
 @NgModule({

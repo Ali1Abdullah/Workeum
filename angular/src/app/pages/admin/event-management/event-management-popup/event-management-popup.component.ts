@@ -5,6 +5,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA
 } from "@angular/material/dialog";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-event-management-popup',
   templateUrl: './event-management-popup.component.html',
@@ -13,6 +14,7 @@ import {
 export class EventManagementPopupComponent implements OnInit {
 
   constructor(private mainService: MainService,
+    public router:Router,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
@@ -21,6 +23,7 @@ export class EventManagementPopupComponent implements OnInit {
   }
   deleteEvent(){
     this.mainService.deleteItemInApi('' ,'api/events/delete/'+this.data.event).subscribe()
+    this.router.navigate(['/admin'])
   }
 
 }

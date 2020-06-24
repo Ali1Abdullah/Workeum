@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/services/main.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-employee-form',
@@ -6,10 +9,81 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee-form.component.css']
 })
 export class EmployeeFormComponent implements OnInit {
-Image:boolean =false;
-  constructor() { }
+Image;
+uploadImage:FormGroup
+memberForm:FormGroup
+  constructor(private mainService: MainService, public formBuilder: FormBuilder,public http:HttpClient) { }
 
   ngOnInit(): void {
+
+
+    this.memberForm = new FormGroup({
+      FullName: new FormControl(null,Validators.required),
+      CompanyName:  new FormControl(null,Validators.required),
+      DOB:new FormControl(null,Validators.required),
+      PhoneNumber: new FormControl(null,Validators.required),
+      Email: new FormControl(null,[Validators.email,Validators.required]),
+      Position: new FormControl(null,Validators.required),
+      Password: new FormControl(null,Validators.required),
+      ConfirmPassword: new FormControl(null,Validators.required)
+    })
+    
+  this.uploadImage = this.formBuilder.group({
+    profile: [""]
+  });
   }
 
+
+  onFileChanged(event) {
+ 
+    let file = event.target.files[0];
+    this.uploadImage.get("profile").setValue(file);
+    let files = event.target.files;
+    if (files.length === 0) {
+      return;
+    }
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      alert("Only images are supported.");
+      return;
+    }
+    var reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    if (files[0].size / 1024 / 1024 > 0.2) {
+      alert("File is too large");
+    } else {
+      reader.onload = _event => {
+        this.Image = reader.result;
+      };
+    }
+  }
+
+  onSubmit(){
+    let json={
+ 
+      "FullName": "AB",
+      "CompanyName": "Stork",
+      "DOB":'2020-02-02',
+      "PhoneNumber": "03131313",
+      "Email":"ali@an.com",
+      "Position":"CTO",
+      "Password":"alialiali"
+    }
+
+    this.mainService.addToApi(json,'api/members/add').subscribe(id=>{
+
+        let formData = new FormData();
+        formData.append("uploadFile", this.uploadImage.get("profile").value);
+
+
+      
+          return this.http.post(
+            'http://localhost:3001/api/member/image/' + parseInt(id),formData).subscribe()
+        
+      
+
+      
+    })
+   
+  }
 }

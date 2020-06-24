@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
-import { format } from 'path';
+
 
 @Component({
   selector: 'app-company-form',

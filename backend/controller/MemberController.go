@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"mime"
 	"net/http"
 	"os"
@@ -15,16 +16,16 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// func HandleGetMembers(w http.ResponseWriter, r *http.Request) {
-// 	utils.EnableCors(&w)
-// 	var members model.Members
-// 	members = model.GetMembers()
-// 	data, err := json.Marshal(member.AllMembers)
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-// 	fmt.Fprintf(w, "%s", data)
-// }
+func HandleGetMembers(w http.ResponseWriter, r *http.Request) {
+	utils.EnableCors(&w)
+	var members model.Members
+	members = model.GetMembers()
+	data, err := json.Marshal(members.AllMembers)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprintf(w, "%s", data)
+}
 
 func HandleMemberSignup(w http.ResponseWriter, r *http.Request) {
 	utils.EnableCors(&w)
@@ -79,7 +80,7 @@ func HandleUpdateMember(w http.ResponseWriter, req *http.Request) {
 func UploadMemberImageHandler(w http.ResponseWriter, r *http.Request) {
 	utils.EnableCors(&w)
 	const maxUploadSize = 4 * 1024 * 1024 // 2 MB
-	var uploadPath = "../images"
+	var uploadPath = "./images"
 	fmt.Println("Response: ", r)
 	fmt.Println("Response Body: ", r.Body)
 	// validate file size

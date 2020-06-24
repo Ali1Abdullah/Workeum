@@ -13,8 +13,8 @@
     <div class="col-lg-6" style="text-align: center;">
         <img src="../../../../../assets/images/meeting.jpg" style="width: 70%;height: 250px" >
         <div style="position: absolute;bottom: 0;right:0;">
-        <button class="btn btn-primary" (click)="editEvent()">Edit</button>
-        <button class="btn btn-danger" style="margin:10px;margin-right: 40px;" (click)="deleteEvent()">Delete</button>
+        <!-- <button class="btn btn-primary" (click)="editEvent()">Edit</button> -->
+        <button class="btn btn-danger" style="margin:10px;margin-right: 40px;" [mat-dialog-close]="true" mat-dialog-close (click)="deleteEvent()">Delete</button>
         </div>
     </div>
 </div>

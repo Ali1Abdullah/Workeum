@@ -21,12 +21,40 @@ type Members struct {
 	AllMembers []Member
 }
 
+func GetMembers() Members {
+	sqlStmt := `SELECT * FROM public."Members"`
+	rows, err := db.Query(sqlStmt)
+	members := Members{}
+	defer rows.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+	for rows.Next() {
+		mmbr := Member{}
+		err := rows.Scan(
+			&mmbr.MemberId,
+			&mmbr.MemberName,
+			&mmbr.CompanyName,
+			&mmbr.Email,
+			&mmbr.PhoneNumber,
+			&mmbr.BOD,
+			&mmbr.Position,
+			&mmbr.Password,
+			&mmbr.Image)
+		if err != nil {
+			log.Fatal(err)
+		}
+		members.AllMembers = append(members.AllMembers, mmbr)
+	}
+	return members
+}
+
 func CreateMember(mmbr Member) {
 	sqlStmt := `INSERT INTO public."Members"(
-		"MemberName", "CompanyName", "Email", "PhoneNumber","BOD", "Position","Password")
-		VALUES ($1, $2, $3, $4, $5,$6,$7)`
+		"MemberName", "CompanyName", "Email", "PhoneNumber","BOD", "Position","Password","Image")
+		VALUES ($1, $2, $3, $4, $5,$6,$7,$8)`
 
-	_, err := db.Exec(sqlStmt, mmbr.MemberName, mmbr.CompanyName, mmbr.Email, mmbr.PhoneNumber, mmbr.BOD, mmbr.Position, mmbr.Password)
+	_, err := db.Exec(sqlStmt, mmbr.MemberName, mmbr.CompanyName, mmbr.Email, mmbr.PhoneNumber, mmbr.BOD, mmbr.Position, mmbr.Password, "")
 
 	if err != nil {
 		log.Fatal(err)
@@ -65,7 +93,8 @@ func GetLastMemberId() int {
 
 func UpdateMemberImage(id int, image string) {
 	sql := `UPDATE public."Members"
-    SET   "Image"=$1 WHERE "MemberId"=$2;`
+	SET   "Image"=$1 WHERE "MemberId"=$2;`
+	fmt.Println("hi")
 	_, err := db.Exec(sql, image, id)
 	if err != nil {
 		fmt.Println(err)
