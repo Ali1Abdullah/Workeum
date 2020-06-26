@@ -21,6 +21,34 @@ type Companies struct {
 	AllCompanies []Company
 }
 
+func GetCompanies() Companies {
+	sqlStmt := `SELECT * FROM public."Companies"`
+	rows, err := db.Query(sqlStmt)
+	companies := Companies{}
+	defer rows.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+	for rows.Next() {
+		cmpny := Company{}
+		err := rows.Scan(
+			&cmpny.CompanyId,
+			&cmpny.CompanyName,
+			&cmpny.FounderName,
+			&cmpny.BusinessType,
+			&cmpny.Others,
+			&cmpny.Email,
+			&cmpny.PhoneNumber,
+			&cmpny.Password,
+			&cmpny.Image)
+		if err != nil {
+			log.Fatal(err)
+		}
+		companies.AllCompanies = append(companies.AllCompanies, cmpny)
+	}
+	return companies
+}
+
 func DeleteCompnay(id int) {
 	sqlStmt := `DELETE FROM public."Companies" WHERE "CompanyId" = $1`
 
@@ -28,7 +56,7 @@ func DeleteCompnay(id int) {
 	if err != nil {
 		log.Fatal(err)
 	} else {
-		fmt.Println("Member got deleted")
+		fmt.Println("Company got deleted")
 	}
 }
 

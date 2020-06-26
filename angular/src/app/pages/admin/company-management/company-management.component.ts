@@ -1,17 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 import { MainService } from 'src/app/services/main.service';
-import { Member } from 'src/app/models/member.model';
-
+import { MatTableDataSource } from '@angular/material/table';
+import { Company } from 'src/app/models/compnay.model';
 
 @Component({
-  selector: 'app-employee-management',
-  templateUrl: './employee-management.component.html',
-  styleUrls: ['./employee-management.component.css']
+  selector: 'app-company-management',
+  templateUrl: './company-management.component.html',
+  styleUrls: ['./company-management.component.css']
 })
-export class EmployeeManagementComponent implements OnInit {
+export class CompanyManagementComponent implements OnInit {
 
   constructor(public mainService: MainService){}
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -25,9 +24,9 @@ export class EmployeeManagementComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   ngOnInit(){
-    this.mainService.getDataFromApi('','api/members',Member).subscribe(data=>{
-      data.forEach(member => {
-        member.Image ='../../../../assets/members/'+ member.Image
+    this.mainService.getDataFromApi('','api/companies',Company).subscribe(data=>{
+      data.forEach(company => {
+        company.Image ='../../../../assets/companys/'+ company.Image
       });
       this.dataSource = new MatTableDataSource(data)
       
@@ -41,10 +40,9 @@ export class EmployeeManagementComponent implements OnInit {
   }
 
   delete(id){
-      this.mainService.deleteItemInApi('' ,'api/members/delete/'+id).subscribe()
+      this.mainService.deleteItemInApi('' ,'api/companies/delete/'+id).subscribe()
       location.reload()
   }
-
 
 
 }

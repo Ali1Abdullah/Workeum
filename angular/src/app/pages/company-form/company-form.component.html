@@ -47,7 +47,8 @@
                     <div class="form-group">
                         <label for="Name">Company Name</label>
                         <input type="text" class="form-control" id="CompanyName" formControlName="CompanyName" placeholder="Enter Your Company Name">
-
+                        <span *ngIf="!companyForm.get('CompanyName').valid && companyForm.get('CompanyName').touched" class="help-block">
+                            Please Enter A Valid Company Name</span>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -56,7 +57,8 @@
                         <input type="text" class="form-control" id="FounderName"
                         formControlName="FounderName"
                             placeholder="Enter Company's Founder Name">
-
+                            <span *ngIf="!companyForm.get('FounderName').valid && companyForm.get('FounderName').touched" class="help-block">
+                                Please Enter A Valid Founder Name</span>
                     </div>
                 </div>
             </div>
@@ -67,13 +69,16 @@
                         <input type="text" class="form-control" id="EmailAddress"
                         formControlName="Email"
                             placeholder="Enter Your Email Address">
-
+                            <span *ngIf="!companyForm.get('Email').valid && companyForm.get('Email').touched" class="help-block">
+                                Please Enter A Valid Email </span>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <label for="PhoneNumber">Phone Number</label>
                         <input type="text" class="form-control" formControlName="PhoneNumber" id="PhoneNumber" placeholder="Enter Your Phone Number">
+                        <span *ngIf="!companyForm.get('PhoneNumber').valid && companyForm.get('PhoneNumber').touched" class="help-block">
+                            Please Enter A Valid Phone Number </span>
                     </div>
                 </div>
             </div>
@@ -91,7 +96,8 @@
                             <option value="C">C</option>
                             <option value="C">Others</option>
                         </select>
-
+                        <span *ngIf="!companyForm.get('BusinessType').valid && companyForm.get('BusinessType').touched" class="help-block">
+                            Please Choose Business Type </span>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -108,12 +114,16 @@
                     <div class="form-group">
                         <label for="Password">Password</label>
                         <input type="text" class="form-control" formControlName="Password" id="Password" placeholder="Enter Password">
+                        <span *ngIf="!companyForm.get('Password').valid && companyForm.get('Password').touched" class="help-block">
+                            Please Enter A Valid Password</span>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="form-group">
                         <label for="ConfirmPassword">Confirm Password</label>
                         <input type="text" class="form-control" formControlName="ConfirmPassword" id="ConfirmPassword" placeholder="Confirm Your Password">
+                        <span *ngIf="!companyForm.get('ConfirmPassword').valid && companyForm.get('ConfirmPassword').touched" class="help-block">
+                            Passwords Should Match!</span>
                     </div>
                 </div>
             </div>

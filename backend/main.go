@@ -26,6 +26,7 @@ func main() {
 	Router.HandleFunc("/api/reservations/{startDate}/{endDate}", controller.HandleGetReservations)
 	Router.HandleFunc("/api/reservations/delete/{id}", controller.HandleDeleteReservation)
 
+	Router.HandleFunc("/api/companies", controller.HandleGetCompanies)
 	Router.HandleFunc("/api/companies/delete/{id}", controller.HandleDeleteCompany)
 	Router.HandleFunc("/api/companies/add", controller.HandleCompanySignup)
 	Router.HandleFunc("/api/companies/edit", controller.HandleUpdateCompany)

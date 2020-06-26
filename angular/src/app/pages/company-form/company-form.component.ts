@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ValidationErrors, AbstractControl, FormBuilder } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
 
 
@@ -9,9 +9,23 @@ import { MainService } from 'src/app/services/main.service';
   styleUrls: ['./company-form.component.css']
 })
 export class CompanyFormComponent implements OnInit {
-  Image:boolean =false;
+  Image;
   companyForm: FormGroup
-  constructor(public mainService: MainService) { }
+  uploadImage:FormGroup
+  constructor(public mainService: MainService,public formBuilder: FormBuilder) { }
+
+  public static matchValues(
+    matchTo: string // name of the control to match to
+  ): (AbstractControl) => ValidationErrors | null {
+    return (control: AbstractControl): ValidationErrors | null => {
+      return !!control.parent &&
+        !!control.parent.value &&
+        control.value === control.parent.controls[matchTo].value
+        ? null
+        : { isMatching: false };
+    };
+}
+
 
   ngOnInit(): void {
     this.companyForm = new FormGroup({
@@ -22,15 +36,47 @@ export class CompanyFormComponent implements OnInit {
       Others:new FormControl(null),
       PhoneNumber:new FormControl(null,Validators.required),
       Password: new FormControl(null,Validators.required),
-      ConfirmPassword: new FormControl(null,Validators.required)
+      ConfirmPassword: new FormControl(null,[
+        Validators.required,
+        CompanyFormComponent.matchValues('Password'),
+      ])
     })
-    }
   
+
+  this.uploadImage = this.formBuilder.group({
+    profile: [""]
+  });
+  }
+
+
+  onFileChanged(event) {
+ 
+    let file = event.target.files[0];
+    this.uploadImage.get("profile").setValue(file);
+    let files = event.target.files;
+    if (files.length === 0) {
+      return;
+    }
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      alert("Only images are supported.");
+      return;
+    }
+    var reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    if (files[0].size / 1024 / 1024 > 0.2) {
+      alert("File is too large");
+    } else {
+      reader.onload = _event => {
+        this.Image = reader.result;
+      };
+    }
+  }
+
     onSubmit(){
       this.mainService.addToApi(this.companyForm.value,'api/companies/add').subscribe(num=>{
         console.log(num)
       })
     }
-
 }
 

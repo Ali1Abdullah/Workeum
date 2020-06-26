@@ -12,10 +12,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { EventManagementPopupComponent } from './event-management/event-management-popup/event-management-popup.component';
 import { EventAddComponent } from './event-add/event-add.component';
 import { EmployeeManagementComponent } from './employee-management/employee-management.component';
+import { CompanyManagementComponent } from './company-management/company-management.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, EventManagementComponent, MessagesComponent, EventManagementPopupComponent, EventAddComponent, EmployeeManagementComponent],
+  declarations: [AdminComponent, EventManagementComponent, MessagesComponent, EventManagementPopupComponent, EventAddComponent, EmployeeManagementComponent, CompanyManagementComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"math/rand"
 	"mime"
 	"net/http"
@@ -15,6 +16,17 @@ import (
 	utils "../utils"
 	"github.com/gorilla/mux"
 )
+
+func HandleGetCompanies(w http.ResponseWriter, r *http.Request) {
+	utils.EnableCors(&w)
+	var companies model.Companies
+	companies = model.GetCompanies()
+	data, err := json.Marshal(companies.AllCompanies)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprintf(w, "%s", data)
+}
 
 func HandleCompanySignup(w http.ResponseWriter, r *http.Request) {
 	utils.EnableCors(&w)

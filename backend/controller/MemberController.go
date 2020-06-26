@@ -80,7 +80,7 @@ func HandleUpdateMember(w http.ResponseWriter, req *http.Request) {
 func UploadMemberImageHandler(w http.ResponseWriter, r *http.Request) {
 	utils.EnableCors(&w)
 	const maxUploadSize = 4 * 1024 * 1024 // 2 MB
-	var uploadPath = "./images"
+	var uploadPath = "./../angular/src/assets/members"
 	fmt.Println("Response: ", r)
 	fmt.Println("Response Body: ", r.Body)
 	// validate file size

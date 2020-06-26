@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/services/main.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -14,18 +14,33 @@ uploadImage:FormGroup
 memberForm:FormGroup
   constructor(private mainService: MainService, public formBuilder: FormBuilder,public http:HttpClient) { }
 
+  public static matchValues(
+    matchTo: string // name of the control to match to
+  ): (AbstractControl) => ValidationErrors | null {
+    return (control: AbstractControl): ValidationErrors | null => {
+      return !!control.parent &&
+        !!control.parent.value &&
+        control.value === control.parent.controls[matchTo].value
+        ? null
+        : { isMatching: false };
+    };
+}
+
   ngOnInit(): void {
 
 
     this.memberForm = new FormGroup({
-      FullName: new FormControl(null,Validators.required),
+      MemberName: new FormControl(null,Validators.required),
       CompanyName:  new FormControl(null,Validators.required),
-      DOB:new FormControl(null,Validators.required),
+      BOD:new FormControl(null,Validators.required),
       PhoneNumber: new FormControl(null,Validators.required),
       Email: new FormControl(null,[Validators.email,Validators.required]),
       Position: new FormControl(null,Validators.required),
       Password: new FormControl(null,Validators.required),
-      ConfirmPassword: new FormControl(null,Validators.required)
+      ConfirmPassword: new FormControl(null,[
+        Validators.required,
+        EmployeeFormComponent.matchValues('Password'),
+      ])
     })
     
   this.uploadImage = this.formBuilder.group({
@@ -35,7 +50,6 @@ memberForm:FormGroup
 
 
   onFileChanged(event) {
- 
     let file = event.target.files[0];
     this.uploadImage.get("profile").setValue(file);
     let files = event.target.files;
@@ -60,10 +74,9 @@ memberForm:FormGroup
 
   onSubmit(){
     let json={
- 
-      "FullName": "AB",
+      "MemberName": "AB",
       "CompanyName": "Stork",
-      "DOB":'2020-02-02',
+      "BOD":'2020-02-02',
       "PhoneNumber": "03131313",
       "Email":"ali@an.com",
       "Position":"CTO",
@@ -71,18 +84,10 @@ memberForm:FormGroup
     }
 
     this.mainService.addToApi(json,'api/members/add').subscribe(id=>{
-
         let formData = new FormData();
         formData.append("uploadFile", this.uploadImage.get("profile").value);
-
-
-      
           return this.http.post(
-            'http://localhost:3001/api/member/image/' + parseInt(id),formData).subscribe()
-        
-      
-
-      
+            'http://localhost:3001/api/member/image/' + parseInt(id),formData).subscribe()   
     })
    
   }
