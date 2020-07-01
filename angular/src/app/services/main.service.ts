@@ -25,6 +25,16 @@ export class MainService implements MainServiceType {
   }
 
 
+  getOneFromApi(params:any,action:string, type: any) {
+    AppService.appLog(['getDataFromApi params:',params]);
+     return this.http.getDataFromServer(action,params).pipe(map((response:any)=>{
+       AppService.appLog(['getDataFromApi',response]);
+       return Main.renderModel(type, response)
+     }));
+}
+
+  
+
   addToApi(formData:any,action:string) {
     return this.http.postDataToServer(action,formData).pipe(map((response:any)=>{
       AppService.appLog(['addToApi',response]);

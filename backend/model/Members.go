@@ -49,6 +49,29 @@ func GetMembers() Members {
 	return members
 }
 
+func GetMember(id int) Member {
+
+	sqlStmt := `SELECT * FROM public."Members" WHERE "MemberId" = $1`
+
+	//retrieving data from database
+	row := db.QueryRow(sqlStmt, id)
+
+	//creating structure for variable and adding the row value to it
+	member := Member{}
+	row.Scan(
+		&member.MemberId,
+		&member.MemberName,
+		&member.CompanyName,
+		&member.Email,
+		&member.PhoneNumber,
+		&member.BOD,
+		&member.Position,
+		&member.Password,
+		&member.Image)
+
+	return member
+}
+
 func CreateMember(mmbr Member) {
 	sqlStmt := `INSERT INTO public."Members"(
 		"MemberName", "CompanyName", "Email", "PhoneNumber","BOD", "Position","Password","Image")

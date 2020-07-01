@@ -27,6 +27,19 @@ func HandleGetMembers(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "%s", data)
 }
 
+func HandleGetMemberById(w http.ResponseWriter, r *http.Request) {
+	utils.EnableCors(&w)
+	var member model.Member
+	params := mux.Vars(r)
+	id, _ := strconv.Atoi(params["id"])
+	member = model.GetMember(id)
+	data, err := json.Marshal(member)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprintf(w, "%s", data)
+}
+
 func HandleMemberSignup(w http.ResponseWriter, r *http.Request) {
 	utils.EnableCors(&w)
 

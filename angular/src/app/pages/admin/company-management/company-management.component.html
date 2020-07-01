@@ -7,42 +7,44 @@
     <!-- Position Column -->
     <ng-container matColumnDef="Image">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
-      <td mat-cell *matCellDef="let member"> <img src="{{member.Image}}" style="width: 50px;height:50px;border-radius: 50%;padding: 5px;"> </td>
+      <td mat-cell *matCellDef="let company"> <img src="{{company.Image}}" style="width: 50px;height:50px;border-radius: 50%;padding: 5px;"> </td>
     </ng-container>
   
-    <!-- Name Column -->
-    <ng-container matColumnDef="Name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let member"> {{member.MemberName}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="CompanyName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Company Name </th>
-      <td mat-cell *matCellDef="let member"> {{member.CompanyName }} </td>
-    </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="CompanyName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Company Name </th>
+          <td mat-cell *matCellDef="let company"> {{company.CompanyName }} </td>
+        </ng-container>
 
-    <ng-container matColumnDef="Position">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Position </th>
-      <td mat-cell *matCellDef="let member"> {{member.Position}} </td>
+    <!-- Name Column -->
+    <ng-container matColumnDef="FounderName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Founder Name </th>
+      <td mat-cell *matCellDef="let company"> {{company.FounderName}} </td>
+    </ng-container>
+  
+
+
+    <ng-container matColumnDef="BussinessType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Business Type </th>
+      <td mat-cell *matCellDef="let company"> {{company.BusinessType}} </td>
     </ng-container>
 
     <ng-container matColumnDef="Email">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-      <td mat-cell *matCellDef="let member"> {{member.Email}} </td>
+      <td mat-cell *matCellDef="let company"> {{company.Email}} </td>
     </ng-container>
 
     <ng-container matColumnDef="Phone">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
-      <td mat-cell *matCellDef="let member"> {{member.PhoneNumber}} </td>
+      <td mat-cell *matCellDef="let company"> {{company.PhoneNumber}} </td>
     </ng-container>
   
     <!-- Symbol Column -->
     <ng-container matColumnDef="Actions">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-      <td mat-cell *matCellDef="let member"> 
-        <button class="btn btn-primary" style="margin:10px">Edit</button>
-        <button class="btn btn-danger" (click)="delete(member.CompanyId)">Delete</button>
+      <td mat-cell *matCellDef="let company"> 
+        <button class="btn btn-primary" style="margin:10px" (click)="edit(company.CompanyId)">Edit</button>
+        <button class="btn btn-danger" (click)="delete(company.CompanyId)">Delete</button>
       </td>
     </ng-container>
   

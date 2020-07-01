@@ -7,14 +7,21 @@ import { Reservation } from 'src/app/models/reservation.model';
   styleUrls: ['./seat-booking.component.css']
 })
 export class SeatBookingComponent implements OnInit {
+  MemberId:number;
   seats1: any[]
   seats2: any[]
   seats3: any[]
+  seats4: any[]
+  seats5: any[]
+  seats6: any[]
+  seats7: any[]
+  seats8: any[]
+  seats9: any[]
   reservations: any[]
   constructor(private mainService: MainService) { }
 
   ngOnInit(): void {
-
+    this.MemberId = parseInt(localStorage.getItem("UserId"))
 
     this.seats1 = [
       { Id: 1, reserved: false },
@@ -49,6 +56,77 @@ export class SeatBookingComponent implements OnInit {
       { Id: 26, reserved: false },
       { Id: 27, reserved: false }
     ]
+
+    
+    this.seats4 = [
+      { Id: 1, reserved: false },
+      { Id: 2, reserved: false },
+      { Id: 3, reserved: false },
+      { Id: 4, reserved: false },
+      { Id: 5, reserved: false },
+      { Id: 6, reserved: false },
+      { Id: 7, reserved: false },
+      { Id: 8, reserved: false },
+      { Id: 9, reserved: false }
+    ]
+    this.seats5 = [
+      { Id: 10, reserved: false },
+      { Id: 11, reserved: false },
+      { Id: 12, reserved: false },
+      { Id: 13, reserved: false },
+      { Id: 14, reserved: false },
+      { Id: 15, reserved: false },
+      { Id: 16, reserved: false },
+      { Id: 17, reserved: false },
+      { Id: 18, reserved: false }
+    ]
+    this.seats6 = [
+      { Id: 19, reserved: false },
+      { Id: 20, reserved: false },
+      { Id: 21, reserved: false },
+      { Id: 22, reserved: false },
+      { Id: 23, reserved: false },
+      { Id: 24, reserved: false },
+      { Id: 25, reserved: false },
+      { Id: 26, reserved: false },
+      { Id: 27, reserved: false }
+    ]
+
+    
+    this.seats7 = [
+      { Id: 1, reserved: false },
+      { Id: 2, reserved: false },
+      { Id: 3, reserved: false },
+      { Id: 4, reserved: false },
+      { Id: 5, reserved: false },
+      { Id: 6, reserved: false },
+      { Id: 7, reserved: false },
+      { Id: 8, reserved: false },
+      { Id: 9, reserved: false }
+    ]
+    this.seats8 = [
+      { Id: 10, reserved: false },
+      { Id: 11, reserved: false },
+      { Id: 12, reserved: false },
+      { Id: 13, reserved: false },
+      { Id: 14, reserved: false },
+      { Id: 15, reserved: false },
+      { Id: 16, reserved: false },
+      { Id: 17, reserved: false },
+      { Id: 18, reserved: false }
+    ]
+    this.seats9 = [
+      { Id: 19, reserved: false },
+      { Id: 20, reserved: false },
+      { Id: 21, reserved: false },
+      { Id: 22, reserved: false },
+      { Id: 23, reserved: false },
+      { Id: 24, reserved: false },
+      { Id: 25, reserved: false },
+      { Id: 26, reserved: false },
+      { Id: 27, reserved: false }
+    ]
+
 
 
   }

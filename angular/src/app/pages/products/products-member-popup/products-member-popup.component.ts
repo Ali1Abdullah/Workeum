@@ -16,5 +16,8 @@ export class ProductsMemberPopupComponent implements OnInit {
   onJoinUs(){
     this.router.navigate(['/employeefrom']);
   }
+  onLogin(){
+    this.router.navigate(['/login-member']);
+  }
 
 }

@@ -11,6 +11,7 @@ export class MemberPanelComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
   }
   mobileQuery: MediaQueryList;
   fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);

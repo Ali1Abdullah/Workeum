@@ -32,3 +32,36 @@ export class AuthGuardService implements CanActivate {
       }
     }
 }
+
+@Injectable({
+  providedIn: "root"
+})
+export class AdminAuthGuardService implements CanActivate {
+
+  isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn') || 'false' )
+
+  constructor(
+    private router: Router
+  ) {}
+
+  setLoggedIn(value: boolean){
+    this.isLoggedIn= value;
+    if (value == true){
+    localStorage.setItem('loggedIn', 'true')
+    }else{
+    localStorage.setItem('loggedIn', 'false')
+    this.router.navigate([''])
+    }
+  }
+
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if (this.isLoggedIn) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+

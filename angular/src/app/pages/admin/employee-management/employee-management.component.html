@@ -41,7 +41,7 @@
     <ng-container matColumnDef="Actions">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
       <td mat-cell *matCellDef="let member"> 
-        <button class="btn btn-primary" style="margin:10px">Edit</button>
+        <button class="btn btn-primary" style="margin:10px" (click)="edit(member.MemberId)">Edit</button>
         <button class="btn btn-danger" (click)="delete(member.MemberId)">Delete</button>
       </td>
     </ng-container>

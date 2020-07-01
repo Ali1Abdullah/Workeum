@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IndexModule } from './pages/index/index.module';
 import { EventsModule } from './pages/events/events.module';
+import { AdminAuthGuardService } from './services/auth.service';
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule),
+    canActivate:[AdminAuthGuardService]
   },
   {
     path: 'member-panel',
@@ -39,6 +41,10 @@ const routes: Routes = [
   {
     path: 'login-member',
     loadChildren: () => import('./pages/login-member/login-member.module').then(m => m.LoginMemberModule)
+  },
+  {
+    path: 'login-admin',
+    loadChildren: () => import('./pages/login-admin/login-admin.module').then(m => m.LoginAdminModule)
   },
 ];
 

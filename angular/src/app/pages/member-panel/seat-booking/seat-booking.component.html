@@ -42,77 +42,188 @@
                 <div class="form-group">
                     <button class="btn btn-primary" (click)="chooseDate()">Choose</button>
                     </div>
-            </div>
-  
-  
-             
-         
-
-
-
-             
-
-
-         
+            </div>     
         </div>
 
-
-        <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
-            style="margin: 0 auto;margin-top: 20px;">
-            <mat-button-toggle *ngFor="let seat of seats1" value="{{seat.Id}}" style="width:100%">
-                <button disabled *ngIf="seat.reserved" style="border: none;background-color: #ce0200;padding: 15px;">
-                    <p>{{seat.Id}}</p>
-                    <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
-                    <img src="../../../assets/images/desk.png" style="width: 50px;">
-                </button>
-
-
-                <button *ngIf="!seat.reserved" style="background-color: transparent;border: none;padding: 15px;">
-                    <p>{{seat.Id}}</p>
-                    <p style="color: blue;font-family:  MuseoSans_300;">Availabe</p>
-                    <img src="../../../assets/images/desk.png" style="width: 50px;">
-                </button>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
-
-        <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
-            style="margin: 0 auto;margin-top: 20px;">
-            <mat-button-toggle *ngFor="let seat of seats2" value="{{seat.Id}}" style="width:100%">
-                <button disabled *ngIf="seat.reserved" style="border: none;background-color: #ce0200;padding: 15px;">
-                    <p>{{seat.Id}}</p>
-                    <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
-                    <img src="../../../assets/images/desk.png" style="width: 50px;">
-                </button>
-
-
-                <button *ngIf="!seat.reserved" style="background-color: transparent;border: none;padding: 15px;">
-                    <p>{{seat.Id}}</p>
-                    <p style="color: blue;font-family:  MuseoSans_300;">Availabe</p>
-                    <img src="../../../assets/images/desk.png" style="width: 50px;">
-                </button>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
-
-
-
-
+        <mat-tab-group  mat-align-tabs="center"> 
+            <mat-tab label="First">
+                <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
+                style="margin: 0 auto;margin-top: 20px;">
+                <mat-button-toggle *ngFor="let seat of seats1" value="{{seat.Id}}" style="width:100%">
+                    <button disabled *ngIf="seat.reserved" style="border: none;background-color: #ce0200;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+    
+    
+                    <button *ngIf="!seat.reserved" style="background-color: transparent;border: none;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: blue;font-family:  MuseoSans_300;">Availabe</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+    
             <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
-            style="margin: 0 auto;margin-top: 20px;">
-            <mat-button-toggle *ngFor="let seat of seats3" value="{{seat.Id}}" style="width:100%">
-                <button disabled *ngIf="seat.reserved" style="border: none;background-color: #ce0200;padding: 15px;">
-                    <p>{{seat.Id}}</p>
-                    <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
-                    <img src="../../../assets/images/desk.png" style="width: 50px;">
-                </button>
+                style="margin: 0 auto;margin-top: 20px;">
+                <mat-button-toggle *ngFor="let seat of seats2" value="{{seat.Id}}" style="width:100%">
+                    <button disabled *ngIf="seat.reserved" style="border: none;background-color: #ce0200;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+    
+    
+                    <button *ngIf="!seat.reserved" style="background-color: transparent;border: none;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: blue;font-family:  MuseoSans_300;">Availabe</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+    
+    
+    
+    
+                <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
+                style="margin: 0 auto;margin-top: 20px;">
+                <mat-button-toggle *ngFor="let seat of seats3" value="{{seat.Id}}" style="width:100%">
+                    <button disabled *ngIf="seat.reserved" style="border: none;background-color: #ce0200;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+    
+    
+                    <button *ngIf="!seat.reserved" style="background-color: transparent;border: none;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: blue;font-family:  MuseoSans_300;">Availabe</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+            </mat-tab>
+            <mat-tab label="Second"> 
+                <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
+                style="margin: 0 auto;margin-top: 20px;">
+                <mat-button-toggle *ngFor="let seat of seats5" value="{{seat.Id}}" style="width:100%">
+                    <button disabled *ngIf="seat.reserved" style="border: none;background-color: #ce0200;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+    
+    
+                    <button *ngIf="!seat.reserved" style="background-color: transparent;border: none;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: blue;font-family:  MuseoSans_300;">Availabe</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+    
+            <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
+                style="margin: 0 auto;margin-top: 20px;">
+                <mat-button-toggle *ngFor="let seat of seats5" value="{{seat.Id}}" style="width:100%">
+                    <button disabled *ngIf="seat.reserved" style="border: none;background-color: #ce0200;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+    
+    
+                    <button *ngIf="!seat.reserved" style="background-color: transparent;border: none;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: blue;font-family:  MuseoSans_300;">Availabe</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+    
+    
+    
+    
+                <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
+                style="margin: 0 auto;margin-top: 20px;">
+                <mat-button-toggle *ngFor="let seat of seats6" value="{{seat.Id}}" style="width:100%">
+                    <button disabled *ngIf="seat.reserved" style="border: none;background-color: #ce0200;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+    
+    
+                    <button *ngIf="!seat.reserved" style="background-color: transparent;border: none;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: blue;font-family:  MuseoSans_300;">Availabe</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+                </mat-button-toggle>
+            </mat-button-toggle-group> </mat-tab>
+            <mat-tab label="Third"> 
+                <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
+                style="margin: 0 auto;margin-top: 20px;">
+                <mat-button-toggle *ngFor="let seat of seats7" value="{{seat.Id}}" style="width:100%">
+                    <button disabled *ngIf="seat.reserved" style="border: none;background-color: #ce0200;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+    
+    
+                    <button *ngIf="!seat.reserved" style="background-color: transparent;border: none;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: blue;font-family:  MuseoSans_300;">Availabe</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+    
+            <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
+                style="margin: 0 auto;margin-top: 20px;">
+                <mat-button-toggle *ngFor="let seat of seats8" value="{{seat.Id}}" style="width:100%">
+                    <button disabled *ngIf="seat.reserved" style="border: none;background-color: #ce0200;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+    
+    
+                    <button *ngIf="!seat.reserved" style="background-color: transparent;border: none;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: blue;font-family:  MuseoSans_300;">Availabe</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+    
+    
+    
+    
+                <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
+                style="margin: 0 auto;margin-top: 20px;">
+                <mat-button-toggle *ngFor="let seat of seats9" value="{{seat.Id}}" style="width:100%">
+                    <button disabled *ngIf="seat.reserved" style="border: none;background-color: #ce0200;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+    
+    
+                    <button *ngIf="!seat.reserved" style="background-color: transparent;border: none;padding: 15px;">
+                        <p>{{seat.Id}}</p>
+                        <p style="color: blue;font-family:  MuseoSans_300;">Availabe</p>
+                        <img src="../../../assets/images/desk.png" style="width: 50px;">
+                    </button>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+            </mat-tab>
+          </mat-tab-group>
 
 
-                <button *ngIf="!seat.reserved" style="background-color: transparent;border: none;padding: 15px;">
-                    <p>{{seat.Id}}</p>
-                    <p style="color: blue;font-family:  MuseoSans_300;">Availabe</p>
-                    <img src="../../../assets/images/desk.png" style="width: 50px;">
-                </button>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
+
+
 
     </div>
 

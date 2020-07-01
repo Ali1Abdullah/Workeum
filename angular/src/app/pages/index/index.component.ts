@@ -30,9 +30,7 @@ export class IndexComponent implements OnInit {
 
   
   ngOnInit() {
-    this.mainService.getDataFromApi('','posts', Post).subscribe((posts)=>{
-      AppService.appLog(['posts',posts]);
-    });
+
   }
 
 }

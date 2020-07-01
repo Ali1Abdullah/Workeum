@@ -28,6 +28,19 @@ func HandleGetCompanies(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "%s", data)
 }
 
+func HandleGetCompanyById(w http.ResponseWriter, r *http.Request) {
+	utils.EnableCors(&w)
+	var company model.Company
+	params := mux.Vars(r)
+	id, _ := strconv.Atoi(params["id"])
+	company = model.GetCompany(id)
+	data, err := json.Marshal(company)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprintf(w, "%s", data)
+}
+
 func HandleCompanySignup(w http.ResponseWriter, r *http.Request) {
 	utils.EnableCors(&w)
 
@@ -81,7 +94,7 @@ func HandleUpdateCompany(w http.ResponseWriter, req *http.Request) {
 func UploadCompanyImageHandler(w http.ResponseWriter, r *http.Request) {
 	utils.EnableCors(&w)
 	const maxUploadSize = 4 * 1024 * 1024 // 2 MB
-	var uploadPath = "../images"
+	var uploadPath = "./../angular/src/assets/companys"
 	fmt.Println("Response: ", r)
 	fmt.Println("Response Body: ", r.Body)
 	// validate file size

@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthGuardService } from 'src/app/services/auth.service';
+import { AdminAuthGuardService } from 'src/app/services/auth.service';
 import { AdminAuthService } from 'src/app/services/admin-auth.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-login-member',
-  templateUrl: './login-member.component.html',
-  styleUrls: ['./login-member.component.css']
+  selector: 'app-login-admin',
+  templateUrl: './login-admin.component.html',
+  styleUrls: ['./login-admin.component.css']
 })
-export class LoginMemberComponent implements OnInit {
+export class LoginAdminComponent implements OnInit {
   loginForm: FormGroup;
   checkedFalse: boolean = false;
   constructor(
-    private authGurdService: AuthGuardService, 
+    private authGurdService: AdminAuthGuardService, 
     private authadmin: AdminAuthService, 
     private router: Router) { }
 
@@ -29,25 +29,23 @@ export class LoginMemberComponent implements OnInit {
 
   onSubmit() {
     
-    // this.router.navigate(['/member-panel'])
+    // this.router.navigate(['/admin'])
     //sending data needed
     let payload = JSON.stringify({
       Email: this.loginForm.controls['Email'].value,
       Password: this.loginForm.controls['password'].value
     })
-    this.authadmin.authBolMember(payload).subscribe((data: any) => {
-      if (data != -1) {
+    this.authadmin.authBolAdmin(payload).subscribe((data: boolean) => {
+      if (data == true) {
         //if the data given are true
-        console.log(data)
-        localStorage.setItem("UserId",data)
         this.authGurdService.setLoggedIn(true)
-        this.router.navigate(['/member-panel'])
+        this.router.navigate(['/admin'])
       }
       else {
         //if data given are false
         this.checkedFalse = true;
         this.authGurdService.setLoggedIn(false)
-        this.router.navigate(['/login-member'])
+        this.router.navigate(['/login-admin'])
       }
 
     });

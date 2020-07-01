@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-event-add',
@@ -21,14 +22,12 @@ export class EventAddComponent implements OnInit {
   //for event management
   eventForm: FormGroup;
   event: Event;
-  datesValid: boolean = false;
-  datesFuture: boolean = false;
   timeValid: boolean = false;
   uploadForm: FormGroup;
   constructor(
+    private http: HttpClient,
     private mainService: MainService,
     private formBuilder: FormBuilder,
-
   ) { }
 
   ngOnInit() {
@@ -95,9 +94,12 @@ export class EventAddComponent implements OnInit {
   }
 
 
-  onSubmit(){
-    this.mainService.addToApi(this.eventForm.value,'api/events/add').subscribe(num=>{
-      console.log(num)
+  onSubmit() {
+    this.mainService.addToApi(this.eventForm.value, 'api/events/add').subscribe(num => {
+      let formData = new FormData();
+      formData.append("uploadFile", this.uploadForm.get("profile").value);
+      return this.http.post(
+        'http://localhost:3001/api/events/image/' + parseInt(num), formData).subscribe()
     })
   }
 }

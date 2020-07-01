@@ -15,6 +15,17 @@ export class AdminAuthService {
 
 
   public authBolMember(payload) {
-    return this.http.post(this.accessPointUrl +'/api/login' ,payload, {headers: this.headers});
+    return this.http.post(this.accessPointUrl +'/api/login/user' ,payload,  {responseType: 'text'});
   }
+
+  public authBolAdmin(payload) {
+    return this.http.post(this.accessPointUrl +'/api/login/admin' ,payload, {headers: this.headers});
+  }
+
+  public authBolCompany(payload) {
+    return this.http.post(this.accessPointUrl +'/api/login/company' ,payload, {headers: this.headers});
+  }
+
+
+  
 }

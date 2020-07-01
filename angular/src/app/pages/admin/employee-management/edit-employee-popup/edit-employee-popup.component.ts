@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl, ValidationErrors, FormBuilder, FormsModule } from '@angular/forms';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormControl, FormGroup, Validators, AbstractControl, ValidationErrors, FormBuilder } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
 import { HttpClient } from '@angular/common/http';
 import { Member } from 'src/app/models/member.model';
-import { formatDate } from '@fullcalendar/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-edit-member-profile',
-  templateUrl: './edit-member-profile.component.html',
-  styleUrls: ['./edit-member-profile.component.css']
+  selector: 'app-edit-employee-popup',
+  templateUrl: './edit-employee-popup.component.html',
+  styleUrls: ['./edit-employee-popup.component.css']
 })
-export class EditMemberProfileComponent implements OnInit {
+export class EditEmployeePopupComponent implements OnInit {
 
   Image;
   uploadImage:FormGroup
   memberEditForm:FormGroup
   MemberId:number;
   ImageChanged: boolean = false;
-    constructor(private mainService: MainService, public formBuilder: FormBuilder,public http:HttpClient) { }
+    constructor(private mainService: MainService, public formBuilder: FormBuilder,public http:HttpClient,
+      @Inject(MAT_DIALOG_DATA) public data: any) { }
   
     public static matchValues(
       matchTo: string // name of the control to match to
@@ -37,11 +38,9 @@ export class EditMemberProfileComponent implements OnInit {
       return result
     }
     ngOnInit() {
-      //      localStorage.setItem('loggedIn', 'true')
-      //    isLoggedIn: boolean = JSON.parse(localStorage.getItem('loggedIn') || 'false' )
-      this.MemberId = parseInt(localStorage.getItem("UserId"))
 
-  
+      this.MemberId = this.data.id
+      console.log(this.MemberId)
       this.mainService.getOneFromApi('','api/member/'+this.MemberId,Member).subscribe(member=>{
         console.log(member)
           this.Image ='../../../../assets/members/'+ member.Image
@@ -97,6 +96,5 @@ export class EditMemberProfileComponent implements OnInit {
             return this.http.post(
               'http://localhost:3001/api/member/image/' + this.MemberId,formData).subscribe()   
         }
-     
     }
   }

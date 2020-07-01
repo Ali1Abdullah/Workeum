@@ -15,11 +15,12 @@ const routes: Routes = [
     path: '',
     component:AdminComponent,
     children: [
+      { path: '',  component: CompanyManagementComponent },
       { path: 'events',  component: EventManagementComponent },
       { path: 'add-event',  component: EventAddComponent },
       { path: 'messages',  component: MessagesComponent },
       { path: 'employee',  component: EmployeeManagementComponent },
-      { path: 'companies',  component: CompanyManagementComponent },
+    
     ]
   }
 

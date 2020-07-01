@@ -13,7 +13,6 @@ type Company struct {
 	Others       string `json:"Others"`
 	Email        string `json:"Email"`
 	PhoneNumber  string `json:"PhoneNumber"`
-	Password     string `json:"Password"`
 	Image        string `json:"Image"`
 }
 
@@ -39,7 +38,6 @@ func GetCompanies() Companies {
 			&cmpny.Others,
 			&cmpny.Email,
 			&cmpny.PhoneNumber,
-			&cmpny.Password,
 			&cmpny.Image)
 		if err != nil {
 			log.Fatal(err)
@@ -47,6 +45,28 @@ func GetCompanies() Companies {
 		companies.AllCompanies = append(companies.AllCompanies, cmpny)
 	}
 	return companies
+}
+
+func GetCompany(id int) Company {
+
+	sqlStmt := `SELECT * FROM public."Companies" WHERE "CompanyId" = $1`
+
+	//retrieving data from database
+	row := db.QueryRow(sqlStmt, id)
+
+	//creating structure for variable and adding the row value to it
+	cmpny := Company{}
+	row.Scan(
+		&cmpny.CompanyId,
+		&cmpny.CompanyName,
+		&cmpny.FounderName,
+		&cmpny.BusinessType,
+		&cmpny.Others,
+		&cmpny.Email,
+		&cmpny.PhoneNumber,
+		&cmpny.Image)
+
+	return cmpny
 }
 
 func DeleteCompnay(id int) {
@@ -62,10 +82,10 @@ func DeleteCompnay(id int) {
 
 func CreateCompany(comp Company) {
 	sqlStmt := `INSERT INTO public."Companies"(
-		"CompanyName", "FounderName","BusinessType","Others", "Email", "PhoneNumber","Password")
+		"CompanyName", "FounderName","BusinessType","Others", "Email", "PhoneNumber")
 		VALUES ($1, $2, $3, $4, $5,$6,$7)`
 
-	_, err := db.Exec(sqlStmt, comp.CompanyName, comp.FounderName, comp.BusinessType, comp.Others, comp.Email, comp.PhoneNumber, comp.Password)
+	_, err := db.Exec(sqlStmt, comp.CompanyName, comp.FounderName, comp.BusinessType, comp.Others, comp.Email, comp.PhoneNumber)
 
 	if err != nil {
 		log.Fatal(err)
@@ -104,9 +124,9 @@ func UpdateCompanyImage(id int, image string) {
 
 func UpdateCompany(cmp Company) {
 	sql := `UPDATE public."Companies"
-    SET "CompanyName"=$1, "FounderName"=$2,"BusinessType"=$3,"Others"=$4, "Email"=$5, "PhoneNumber"=$6,"Password"=$7
+    SET "CompanyName"=$1, "FounderName"=$2,"BusinessType"=$3,"Others"=$4, "Email"=$5, "PhoneNumber"=$6
     WHERE "CompanyId"=$8;`
-	_, err := db.Exec(sql, cmp.CompanyName, cmp.FounderName, cmp.BusinessType, cmp.Others, cmp.Email, cmp.PhoneNumber, cmp.Password, cmp.CompanyId)
+	_, err := db.Exec(sql, cmp.CompanyName, cmp.FounderName, cmp.BusinessType, cmp.Others, cmp.Email, cmp.PhoneNumber, cmp.CompanyId)
 	if err != nil {
 		fmt.Println(err)
 	} else {

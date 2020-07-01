@@ -13,10 +13,12 @@ import { EventManagementPopupComponent } from './event-management/event-manageme
 import { EventAddComponent } from './event-add/event-add.component';
 import { EmployeeManagementComponent } from './employee-management/employee-management.component';
 import { CompanyManagementComponent } from './company-management/company-management.component';
+import { EditEmployeePopupComponent } from './employee-management/edit-employee-popup/edit-employee-popup.component';
+import { EditCompanyPopupComponent } from './company-management/edit-company-popup/edit-company-popup.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, EventManagementComponent, MessagesComponent, EventManagementPopupComponent, EventAddComponent, EmployeeManagementComponent, CompanyManagementComponent],
+  declarations: [AdminComponent, EventManagementComponent, MessagesComponent, EventManagementPopupComponent, EventAddComponent, EmployeeManagementComponent, CompanyManagementComponent, EditEmployeePopupComponent, EditCompanyPopupComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -28,6 +30,6 @@ import { CompanyManagementComponent } from './company-management/company-managem
     MatDialogModule,
     MaterialModule
   ],
-  entryComponents:[EventManagementPopupComponent]
+  entryComponents:[EventManagementPopupComponent,EditEmployeePopupComponent,EditCompanyPopupComponent]
 })
 export class AdminModule { }

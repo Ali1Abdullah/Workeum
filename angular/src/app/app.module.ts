@@ -11,7 +11,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { MaterialModule } from './material.module';
 import { AdminAuthService } from './services/admin-auth.service';
-import { AuthGuardService } from './services/auth.service';
+import { AdminAuthGuardService } from './services/auth.service';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { AuthGuardService } from './services/auth.service';
     MaterialModule
     
   ],
-  providers: [HttpService,HttpClient, AdminAuthService,AuthGuardService],
+  providers: [HttpService,HttpClient, AdminAuthService,AdminAuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

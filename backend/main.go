@@ -27,12 +27,14 @@ func main() {
 	Router.HandleFunc("/api/reservations/delete/{id}", controller.HandleDeleteReservation)
 
 	Router.HandleFunc("/api/companies", controller.HandleGetCompanies)
+	Router.HandleFunc("/api/company/{id}", controller.HandleGetCompanyById)
 	Router.HandleFunc("/api/companies/delete/{id}", controller.HandleDeleteCompany)
 	Router.HandleFunc("/api/companies/add", controller.HandleCompanySignup)
 	Router.HandleFunc("/api/companies/edit", controller.HandleUpdateCompany)
-	Router.HandleFunc("/api/companies/image", controller.UploadCompanyImageHandler)
+	Router.HandleFunc("/api/companies/image/{id}", controller.UploadCompanyImageHandler)
 
 	Router.HandleFunc("/api/members", controller.HandleGetMembers)
+	Router.HandleFunc("/api/member/{id}", controller.HandleGetMemberById)
 	Router.HandleFunc("/api/members/add", controller.HandleMemberSignup)
 	Router.HandleFunc("/api/members/edit", controller.HandleUpdateMember)
 	Router.HandleFunc("/api/members/delete/{id}", controller.HandleDeleteMember)
@@ -42,6 +44,11 @@ func main() {
 	Router.HandleFunc("/api/events/add", controller.HandleCreateEvent)
 	Router.HandleFunc("/api/events/edit", controller.HandleUpdateEvent)
 	Router.HandleFunc("/api/events/delete/{id}", controller.HandleDeleteEvent)
+	Router.HandleFunc("/api/events/image/{id}", controller.UploadEventImageHandler)
+
+	Router.HandleFunc("/api/login/admin", controller.AdminLogin)
+	Router.HandleFunc("/api/login/user", controller.UserLogin)
+	Router.HandleFunc("/api/login/company", controller.CompanyLogin)
 
 	log.Fatal(http.ListenAndServe(":3001", Router))
 }

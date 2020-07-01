@@ -73,17 +73,8 @@ memberForm:FormGroup
   }
 
   onSubmit(){
-    let json={
-      "MemberName": "AB",
-      "CompanyName": "Stork",
-      "BOD":'2020-02-02',
-      "PhoneNumber": "03131313",
-      "Email":"ali@an.com",
-      "Position":"CTO",
-      "Password":"alialiali"
-    }
 
-    this.mainService.addToApi(json,'api/members/add').subscribe(id=>{
+    this.mainService.addToApi(this.memberForm.value,'api/members/add').subscribe(id=>{
         let formData = new FormData();
         formData.append("uploadFile", this.uploadImage.get("profile").value);
           return this.http.post(

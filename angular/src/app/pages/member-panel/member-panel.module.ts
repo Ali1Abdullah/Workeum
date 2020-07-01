@@ -6,6 +6,7 @@ import { SeatBookingComponent } from './seat-booking/seat-booking.component';
 import { MaterialModule } from 'src/app/material.module';
 import { LayoutModule } from 'src/app/layout/layout.module';
 import { EditMemberProfileComponent } from './edit-member-profile/edit-member-profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,9 @@ import { EditMemberProfileComponent } from './edit-member-profile/edit-member-pr
     CommonModule,
     MemberPanelRoutingModule,
     MaterialModule,
-    LayoutModule
+    LayoutModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class MemberPanelModule { }

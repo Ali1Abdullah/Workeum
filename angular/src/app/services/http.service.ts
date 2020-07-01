@@ -12,7 +12,7 @@ export class HttpService {
     }
 
     putDataToServer(action: string, dataParams: any) {
-        return this.http.put(HttpService.serverApiUrl + action, dataParams).pipe(map((response: any) => response.json()))
+        return this.http.put(HttpService.serverApiUrl + action, dataParams).pipe(map((response: any) => response))
     }
     deteteDataFromServer(action: string, dataParams: any) {
         return this.http.delete(HttpService.serverApiUrl + action, dataParams)

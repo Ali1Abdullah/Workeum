@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidationErrors, AbstractControl, FormBuilder } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class CompanyFormComponent implements OnInit {
   Image;
   companyForm: FormGroup
   uploadImage:FormGroup
-  constructor(public mainService: MainService,public formBuilder: FormBuilder) { }
+  constructor(public mainService: MainService,public formBuilder: FormBuilder,public http: HttpClient) { }
 
   public static matchValues(
     matchTo: string // name of the control to match to
@@ -74,9 +75,12 @@ export class CompanyFormComponent implements OnInit {
   }
 
     onSubmit(){
-      this.mainService.addToApi(this.companyForm.value,'api/companies/add').subscribe(num=>{
-        console.log(num)
-      })
+      this.mainService.addToApi(this.companyForm.value,'api/companies/add').subscribe(id=>{
+        let formData = new FormData();
+        formData.append("uploadFile", this.uploadImage.get("profile").value);
+          return this.http.post(
+            'http://localhost:3001/api/companies/image/' + parseInt(id),formData).subscribe()   
+    })
     }
 }
 

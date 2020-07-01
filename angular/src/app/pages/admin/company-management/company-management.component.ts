@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MainService } from 'src/app/services/main.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Company } from 'src/app/models/compnay.model';
+import { EditCompanyPopupComponent } from './edit-company-popup/edit-company-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-company-management',
@@ -12,10 +14,10 @@ import { Company } from 'src/app/models/compnay.model';
 })
 export class CompanyManagementComponent implements OnInit {
 
-  constructor(public mainService: MainService){}
+  constructor(public mainService: MainService, public dialog: MatDialog){}
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('MatPaginator', { static: true }) paginator: MatPaginator;
-  displayedColumns: string[] = ['Image', 'Name', 'CompanyName', 'Position','Email', 'Phone','Actions'];
+  displayedColumns: string[] = ['Image', 'CompanyName', 'FounderName', 'BussinessType','Email', 'Phone','Actions'];
   public dataSource;
 
   applyFilter(event: Event) {
@@ -43,6 +45,16 @@ export class CompanyManagementComponent implements OnInit {
       this.mainService.deleteItemInApi('' ,'api/companies/delete/'+id).subscribe()
       location.reload()
   }
+
+  edit(id){
+    this.dialog.open(EditCompanyPopupComponent,{
+     height: "85%",
+     width: "70%",
+      data:{
+        id:id
+      }
+    })
+   }
 
 
 }
