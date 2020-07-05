@@ -15,10 +15,11 @@ import { EmployeeManagementComponent } from './employee-management/employee-mana
 import { CompanyManagementComponent } from './company-management/company-management.component';
 import { EditEmployeePopupComponent } from './employee-management/edit-employee-popup/edit-employee-popup.component';
 import { EditCompanyPopupComponent } from './company-management/edit-company-popup/edit-company-popup.component';
+import { ReservationsManagementComponent } from './reservations-management/reservations-management.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, EventManagementComponent, MessagesComponent, EventManagementPopupComponent, EventAddComponent, EmployeeManagementComponent, CompanyManagementComponent, EditEmployeePopupComponent, EditCompanyPopupComponent],
+  declarations: [AdminComponent, EventManagementComponent, MessagesComponent, EventManagementPopupComponent, EventAddComponent, EmployeeManagementComponent, CompanyManagementComponent, EditEmployeePopupComponent, EditCompanyPopupComponent, ReservationsManagementComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

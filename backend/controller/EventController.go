@@ -38,6 +38,10 @@ func HandleUpdateEvent(w http.ResponseWriter, req *http.Request) {
 	utils.EnableCors(&w)
 	b, err := ioutil.ReadAll(req.Body)
 	var event model.Event
+
+	params := mux.Vars(req)
+	id, _ := strconv.Atoi(params["id"])
+
 	defer req.Body.Close()
 	if err != nil {
 		http.Error(w, err.Error(), 500)
@@ -46,7 +50,7 @@ func HandleUpdateEvent(w http.ResponseWriter, req *http.Request) {
 	// // Unmarshal
 	err = json.Unmarshal(b, &event)
 	fmt.Println(event)
-	model.UpdateEvent(event)
+	model.UpdateEvent(event, id)
 }
 
 func HandleCreateEvent(w http.ResponseWriter, req *http.Request) {

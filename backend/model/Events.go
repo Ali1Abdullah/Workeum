@@ -87,11 +87,11 @@ func GetLastEventId() int {
 	return id
 }
 
-func UpdateEvent(event Event) {
+func UpdateEvent(event Event, id int) {
 	sql := `UPDATE public."Events"
     SET  "EventTitle"=$1, "EventDescription"=$2, "EventDate"=$3, "EventStart"=$4,"EventEnd"=$5
     WHERE "EventId"=$6;`
-	_, err := db.Exec(sql, event.EventTitle, event.EventDescription, event.EventDate, event.EventStart, event.EventEnd, event.EventId)
+	_, err := db.Exec(sql, event.EventTitle, event.EventDescription, event.EventDate, event.EventStart, event.EventEnd, id)
 	if err != nil {
 		fmt.Println(err)
 	} else {

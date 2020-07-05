@@ -42,7 +42,7 @@ func main() {
 
 	Router.HandleFunc("/api/events", controller.HandleGetEvents)
 	Router.HandleFunc("/api/events/add", controller.HandleCreateEvent)
-	Router.HandleFunc("/api/events/edit", controller.HandleUpdateEvent)
+	Router.HandleFunc("/api/events/edit/{id}", controller.HandleUpdateEvent)
 	Router.HandleFunc("/api/events/delete/{id}", controller.HandleDeleteEvent)
 	Router.HandleFunc("/api/events/image/{id}", controller.UploadEventImageHandler)
 

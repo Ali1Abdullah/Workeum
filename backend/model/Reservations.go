@@ -57,7 +57,7 @@ func GetReservations(startDate string, endDate string) Reservations {
 
 func Reserve(reservation Reservation) {
 
-	layout := "2000-01-01"
+	layout := "2006-01-02"
 	start, _ := time.Parse(layout, reservation.StartDate)
 	end, _ := time.Parse(layout, reservation.EndDate)
 

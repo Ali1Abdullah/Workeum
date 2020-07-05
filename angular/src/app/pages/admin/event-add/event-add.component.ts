@@ -43,7 +43,7 @@ export class EventAddComponent implements OnInit {
       EventTitle: new FormControl(null, Validators.required),
       EventDate: new FormControl(null, Validators.required),
       EventDescription: new FormControl(null, Validators.required),
-      EventStart: new FormControl(this.date),
+      EventStart: new FormControl(null, Validators.required),
       EventEnd: new FormControl(null, Validators.required)
     });
 
