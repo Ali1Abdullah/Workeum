@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidationErrors, AbstractControl, FormBuilder } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { CompanyPopupComponent } from './company-popup/company-popup.component';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class CompanyFormComponent implements OnInit {
   Image;
   companyForm: FormGroup
   uploadImage:FormGroup
-  constructor(public mainService: MainService,public formBuilder: FormBuilder,public http: HttpClient) { }
+  constructor(public mainService: MainService,public formBuilder: FormBuilder,public http: HttpClient,public dialog: MatDialog) { }
 
   public static matchValues(
     matchTo: string // name of the control to match to
@@ -36,11 +38,6 @@ export class CompanyFormComponent implements OnInit {
       BusinessType:new FormControl(null,Validators.required),
       Others:new FormControl(null),
       PhoneNumber:new FormControl(null,Validators.required),
-      Password: new FormControl(null,Validators.required),
-      ConfirmPassword: new FormControl(null,[
-        Validators.required,
-        CompanyFormComponent.matchValues('Password'),
-      ])
     })
   
 
@@ -79,8 +76,12 @@ export class CompanyFormComponent implements OnInit {
         let formData = new FormData();
         formData.append("uploadFile", this.uploadImage.get("profile").value);
           return this.http.post(
-            'http://localhost:3001/api/companies/image/' + parseInt(id),formData).subscribe()   
+            'http://localhost:3001/api/companies/image/' + parseInt(id),formData).subscribe(
+    
+            )   
+ 
     })
+    this.dialog.open(CompanyPopupComponent)
     }
 }
 

@@ -1,0 +1,6 @@
+.mat-button-toggle-checked {
+
+    border: 1px #000 solid !important;
+    border-radius: 5px !important;
+    background-color: #CCC !important;
+}

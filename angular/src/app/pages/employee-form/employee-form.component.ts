@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/services/main.service';
 import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-form',
@@ -12,7 +14,7 @@ export class EmployeeFormComponent implements OnInit {
 Image;
 uploadImage:FormGroup
 memberForm:FormGroup
-  constructor(private mainService: MainService, public formBuilder: FormBuilder,public http:HttpClient) { }
+  constructor(private mainService: MainService, public formBuilder: FormBuilder,public http:HttpClient, public router: Router) { }
 
   public static matchValues(
     matchTo: string // name of the control to match to
@@ -75,11 +77,17 @@ memberForm:FormGroup
   onSubmit(){
 
     this.mainService.addToApi(this.memberForm.value,'api/members/add').subscribe(id=>{
+      localStorage.setItem("UserId",id)
         let formData = new FormData();
         formData.append("uploadFile", this.uploadImage.get("profile").value);
           return this.http.post(
-            'http://localhost:3001/api/member/image/' + parseInt(id),formData).subscribe()   
+            'http://localhost:3001/api/member/image/' + parseInt(id),formData).subscribe(
+            )   
+    
+
+            
     })
+    this.router.navigate(['member-panel'])
    
   }
 }

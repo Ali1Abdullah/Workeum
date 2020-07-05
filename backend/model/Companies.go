@@ -83,7 +83,7 @@ func DeleteCompnay(id int) {
 func CreateCompany(comp Company) {
 	sqlStmt := `INSERT INTO public."Companies"(
 		"CompanyName", "FounderName","BusinessType","Others", "Email", "PhoneNumber")
-		VALUES ($1, $2, $3, $4, $5,$6,$7)`
+		VALUES ($1, $2, $3, $4, $5,$6)`
 
 	_, err := db.Exec(sqlStmt, comp.CompanyName, comp.FounderName, comp.BusinessType, comp.Others, comp.Email, comp.PhoneNumber)
 
@@ -125,7 +125,7 @@ func UpdateCompanyImage(id int, image string) {
 func UpdateCompany(cmp Company) {
 	sql := `UPDATE public."Companies"
     SET "CompanyName"=$1, "FounderName"=$2,"BusinessType"=$3,"Others"=$4, "Email"=$5, "PhoneNumber"=$6
-    WHERE "CompanyId"=$8;`
+    WHERE "CompanyId"=$7;`
 	_, err := db.Exec(sql, cmp.CompanyName, cmp.FounderName, cmp.BusinessType, cmp.Others, cmp.Email, cmp.PhoneNumber, cmp.CompanyId)
 	if err != nil {
 		fmt.Println(err)

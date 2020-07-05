@@ -65,6 +65,7 @@ export class SeatBookingComponent implements OnInit {
     })
 
     this.MemberId = parseInt(localStorage.getItem("UserId"))
+    console.log(this.MemberId)
     this.seats1 = [
       { Id: 1, SeatNumber: 1, RoomId: 1, reserved: false },
       { Id: 2, SeatNumber: 2, RoomId: 1, reserved: false },
@@ -174,7 +175,7 @@ export class SeatBookingComponent implements OnInit {
 
 
   chooseDate() {
-    this.mainService.getDataFromApi('', 'api/reservations/' + '2020-03-05' + '/' + '2020-03-10', Reservation).subscribe((reservations) => {
+    this.mainService.getDataFromApi('', 'api/reservations/' + '2020-03-03' + '/' + '2020-03-10', Reservation).subscribe((reservations) => {
       console.log(['reservations', reservations]);
       this.reservations = reservations
       this.seats1.forEach(seat => {
@@ -184,6 +185,24 @@ export class SeatBookingComponent implements OnInit {
         seat.reserved = false
       })
       this.seats3.forEach(seat => {
+        seat.reserved = false
+      })
+      this.seats4.forEach(seat => {
+        seat.reserved = false
+      })
+      this.seats5.forEach(seat => {
+        seat.reserved = false
+      })
+      this.seats6.forEach(seat => {
+        seat.reserved = false
+      })
+      this.seats7.forEach(seat => {
+        seat.reserved = false
+      })
+      this.seats8.forEach(seat => {
+        seat.reserved = false
+      })
+      this.seats9.forEach(seat => {
         seat.reserved = false
       })
       this.reservations.forEach(obj => {
@@ -204,49 +223,49 @@ export class SeatBookingComponent implements OnInit {
           })
         }
         else if (obj.SeatId > 18 && obj.SeatId <= 27) {
-          this.seats2.forEach(seat => {
+          this.seats3.forEach(seat => {
             if (obj.SeatId == seat.Id) {
               seat.reserved = true
             }
           })
         }
         else if (obj.SeatId > 27 && obj.SeatId <= 36) {
-          this.seats2.forEach(seat => {
+          this.seats4.forEach(seat => {
             if (obj.SeatId == seat.Id) {
               seat.reserved = true
             }
           })
         }
         else if (obj.SeatId > 36 && obj.SeatId <= 45) {
-          this.seats2.forEach(seat => {
+          this.seats5.forEach(seat => {
             if (obj.SeatId == seat.Id) {
               seat.reserved = true
             }
           })
         }
         else if (obj.SeatId > 45 && obj.SeatId <= 54) {
-          this.seats2.forEach(seat => {
+          this.seats6.forEach(seat => {
             if (obj.SeatId == seat.Id) {
               seat.reserved = true
             }
           })
         }
         else if (obj.SeatId > 54 && obj.SeatId <= 63) {
-          this.seats2.forEach(seat => {
+          this.seats7.forEach(seat => {
             if (obj.SeatId == seat.Id) {
               seat.reserved = true
             }
           })
         }
         else if (obj.SeatId > 63 && obj.SeatId <= 72) {
-          this.seats2.forEach(seat => {
+          this.seats8.forEach(seat => {
             if (obj.SeatId == seat.Id) {
               seat.reserved = true
             }
           })
         }
         else if (obj.SeatId > 72 && obj.SeatId <= 81) {
-          this.seats2.forEach(seat => {
+          this.seats9.forEach(seat => {
             if (obj.SeatId == seat.Id) {
               seat.reserved = true
             }

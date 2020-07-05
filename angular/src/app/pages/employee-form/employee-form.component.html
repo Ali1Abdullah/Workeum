@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="form-group">
-                            <label for="CompanyName">Company Name</label>
+                            <label for="CompanyName">Company Name / Guest</label>
                             <input type="text" class="form-control" formControlName="CompanyName" id="CompanyName"
                                 placeholder="Enter Your Company Name">
                             <span *ngIf="!memberForm.get('CompanyName').valid && memberForm.get('CompanyName').touched"
@@ -108,7 +108,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <label for="Password">Password</label>
-                            <input type="text" class="form-control" formControlName="Password" id="Password"
+                            <input type="password" class="form-control" formControlName="Password" id="Password"
                                 placeholder="Enter Password">
                             <span *ngIf="!memberForm.get('Password').valid && memberForm.get('Password').touched"
                                 class="help-block">
@@ -118,7 +118,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <label for="ConfirmPassword">Confirm Password</label>
-                            <input type="text" class="form-control" formControlName="ConfirmPassword"
+                            <input type="password" class="form-control" formControlName="ConfirmPassword"
                                 id="ConfirmPassword" placeholder="Confirm Your Password">
                             <span
                                 *ngIf="!memberForm.get('ConfirmPassword').valid && memberForm.get('ConfirmPassword').touched"

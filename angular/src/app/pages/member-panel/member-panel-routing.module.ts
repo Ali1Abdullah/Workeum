@@ -14,7 +14,7 @@ const routes: Routes = [
     component:MemberPanelComponent,
     children: [
       { path: 'seats',  component: SeatBookingComponent },
-      { path: 'profile',  component: EditMemberProfileComponent },
+      { path: '',  component: EditMemberProfileComponent },
     //   { path: 'add-event',  component: EventAddComponent },
     //   { path: 'messages',  component: MessagesComponent },
     //   { path: 'employee',  component: EmployeeManagementComponent },

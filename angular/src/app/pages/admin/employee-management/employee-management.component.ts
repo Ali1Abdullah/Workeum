@@ -29,7 +29,7 @@ export class EmployeeManagementComponent implements OnInit {
   ngOnInit(){
     this.mainService.getDataFromApi('','api/members',Member).subscribe(data=>{
       data.forEach(member => {
-        member.Image ='../../../../assets/members/'+ member.Image
+        member.Image ='../../../assets/members/'+ member.Image
       });
       this.dataSource = new MatTableDataSource(data)
       
