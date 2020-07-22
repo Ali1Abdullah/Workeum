@@ -1,0 +1,26 @@
+<table id="customers" *ngIf="FutureReservations.length" >
+    <tr>
+        <th colspan="2">
+            Future Reservations
+        </th>
+    </tr>
+    <tr *ngFor="let rsrv of FutureReservations" >
+            <td>{{rsrv.StartDate.split('T')[0]}} to {{rsrv.EndDate.split('T')[0]}} on Seat {{rsrv.SeatId}}</td>
+            <td> <button class="btn btn-danger" (click)="cancelReserve(rsrv.ReservationId)">Cancel Reservation</button></td>
+    </tr>
+    
+  </table>
+
+<table id="customers" style="margin-top: 50px;" *ngIf="pastReservations.length" >
+    <tr>
+        <th>
+            Past Reservations
+        </th>
+    </tr>
+    <tr *ngFor="let rsrv of pastReservations" >
+     <td>{{rsrv.StartDate.split('T')[0]}} to {{rsrv.EndDate.split('T')[0]}} on Seat {{rsrv.SeatId}}</td>
+  
+    </tr>
+    
+  </table>
+

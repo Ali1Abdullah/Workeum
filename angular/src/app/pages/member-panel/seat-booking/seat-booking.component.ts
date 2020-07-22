@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/services/main.service';
 import { Reservation } from 'src/app/models/reservation.model';
-import { MAT_DIALOG_SCROLL_STRATEGY_PROVIDER } from '@angular/material/dialog';
+import { MAT_DIALOG_SCROLL_STRATEGY_PROVIDER, MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ReservationPopupComponent } from './reservation-popup/reservation-popup.component';
 @Component({
   selector: 'app-seat-booking',
   templateUrl: './seat-booking.component.html',
@@ -24,7 +25,7 @@ export class SeatBookingComponent implements OnInit {
   reservations: any[]
   seatsToReserve: any[] = [];
   today = new Date().toJSON().split('T')[0];
-  constructor(private mainService: MainService) { }
+  constructor(private mainService: MainService, public dialog: MatDialog) { }
 
 
   checkDates() {
@@ -54,6 +55,8 @@ export class SeatBookingComponent implements OnInit {
       }
       this.mainService.addToApi(json,'api/reservations/reserve').subscribe()
     })
+
+    this.dialog.open(ReservationPopupComponent)
   }
   
   
@@ -175,7 +178,7 @@ export class SeatBookingComponent implements OnInit {
 
 
   chooseDate() {
-    this.mainService.getDataFromApi('', 'api/reservations/' + '2020-03-03' + '/' + '2020-03-10', Reservation).subscribe((reservations) => {
+    this.mainService.getDataFromApi('', 'api/reservations/getreservation/' + this.datesForm.controls['StartDate'].value+ '/' + this.datesForm.controls['EndDate'].value, Reservation).subscribe((reservations) => {
       console.log(['reservations', reservations]);
       this.reservations = reservations
       this.seats1.forEach(seat => {
@@ -205,6 +208,7 @@ export class SeatBookingComponent implements OnInit {
       this.seats9.forEach(seat => {
         seat.reserved = false
       })
+      if(this.reservations){
       this.reservations.forEach(obj => {
         if (obj.SeatId <= 9) {
           this.seats1.forEach(seat => {
@@ -271,9 +275,11 @@ export class SeatBookingComponent implements OnInit {
             }
           })
         }
+        
 
 
       })
+    }
     });
   }
 

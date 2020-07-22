@@ -22,10 +22,7 @@ export class AdminAuthService {
     return this.http.post(this.accessPointUrl +'/api/login/admin' ,payload, {headers: this.headers});
   }
 
-  public authBolCompany(payload) {
-    return this.http.post(this.accessPointUrl +'/api/login/company' ,payload, {headers: this.headers});
-  }
-
+  
 
   
 }

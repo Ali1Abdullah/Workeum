@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { AdminAuthGuardService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -18,7 +20,7 @@ export class AdminComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private authGurdService: AdminAuthGuardService,public router: Router  ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -36,5 +38,9 @@ export class AdminComponent implements OnInit {
     window.scroll(0,0);
   }
 
+  onLogout(){
+    this.authGurdService.setLoggedIn(false)
+    this.router.navigate([''])
+  }
 }
 

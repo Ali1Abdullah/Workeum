@@ -16,10 +16,12 @@ import { CompanyManagementComponent } from './company-management/company-managem
 import { EditEmployeePopupComponent } from './employee-management/edit-employee-popup/edit-employee-popup.component';
 import { EditCompanyPopupComponent } from './company-management/edit-company-popup/edit-company-popup.component';
 import { ReservationsManagementComponent } from './reservations-management/reservations-management.component';
+import { CofirmEditEmployeePopupComponent } from './employee-management/edit-employee-popup/cofirm-edit-employee-popup/cofirm-edit-employee-popup.component';
+import { AddPopupComponent } from './event-add/add-popup/add-popup.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, EventManagementComponent, MessagesComponent, EventManagementPopupComponent, EventAddComponent, EmployeeManagementComponent, CompanyManagementComponent, EditEmployeePopupComponent, EditCompanyPopupComponent, ReservationsManagementComponent],
+  declarations: [AdminComponent, EventManagementComponent, MessagesComponent, EventManagementPopupComponent, EventAddComponent, EmployeeManagementComponent, CompanyManagementComponent, EditEmployeePopupComponent, EditCompanyPopupComponent, ReservationsManagementComponent, CofirmEditEmployeePopupComponent, AddPopupComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -31,6 +33,6 @@ import { ReservationsManagementComponent } from './reservations-management/reser
     MatDialogModule,
     MaterialModule
   ],
-  entryComponents:[EventManagementPopupComponent,EditEmployeePopupComponent,EditCompanyPopupComponent]
+  entryComponents:[EventManagementPopupComponent,EditEmployeePopupComponent,EditCompanyPopupComponent,CofirmEditEmployeePopupComponent, AddPopupComponent]
 })
 export class AdminModule { }

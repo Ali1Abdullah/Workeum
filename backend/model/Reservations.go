@@ -18,6 +18,31 @@ type Reservations struct {
 	AllReservations []Reservation
 }
 
+func GetMemberReservations(id int) Reservations {
+	reservations := Reservations{}
+	sqlStmt := `SELECT * from public."Reservations" WHERE "UserId"= $1`
+	rows, err := db.Query(sqlStmt, id)
+	defer rows.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+	//looping through the item data
+	for rows.Next() {
+		res := Reservation{}
+		err := rows.Scan(
+			&res.ReservationId,
+			&res.SeatId,
+			&res.UserId,
+			&res.StartDate,
+			&res.EndDate)
+		if err != nil {
+			log.Fatal(err)
+		}
+		reservations.AllReservations = append(reservations.AllReservations, res)
+	}
+	return reservations
+}
+
 func GetReservations(startDate string, endDate string) Reservations {
 	fmt.Println(startDate)
 	fmt.Println(endDate)
@@ -28,7 +53,8 @@ func GetReservations(startDate string, endDate string) Reservations {
 
 	sqlStmt := `SELECT * from public."Reservations" WHERE 
     ("StartDate"< $1 AND "EndDate" > $1) OR
-	("StartDate"> $1 AND "StartDate" < $2)`
+	("StartDate"> $1 AND "StartDate" < $2) OR 
+	("StartDate"=$1)`
 
 	rows, err := db.Query(sqlStmt, start, end)
 	fmt.Println(start)

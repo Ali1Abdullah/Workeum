@@ -28,7 +28,7 @@ export class CompanyManagementComponent implements OnInit {
   ngOnInit(){
     this.mainService.getDataFromApi('','api/companies',Company).subscribe(data=>{
       data.forEach(company => {
-        company.Image ='../../../../assets/companys/'+ company.Image
+        company.Image ='../../../assets/companys/'+ company.Image
       });
       this.dataSource = new MatTableDataSource(data)
       

@@ -20,7 +20,12 @@ export class MainService implements MainServiceType {
       AppService.appLog(['getDataFromApi params:',params]);
        return this.http.getDataFromServer(action,params).pipe(map((response:any)=>{
          AppService.appLog(['getDataFromApi',response]);
-         return Main.renderModels(type, response)
+         if(response){
+          return Main.renderModels(type, response)
+         }else{
+           return null
+         }
+ 
        }));
   }
 

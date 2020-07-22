@@ -33,6 +33,19 @@ func HandlePostReservation(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func HandleGetUserReservations(w http.ResponseWriter, r *http.Request) {
+	utils.EnableCors(&w)
+	params := mux.Vars(r)
+	id, _ := strconv.Atoi(params["id"])
+	var reservations model.Reservations
+	reservations = model.GetMemberReservations(id)
+	data, err := json.Marshal(reservations.AllReservations)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Fprintf(w, "%s", data)
+}
+
 func HandleGetReservations(w http.ResponseWriter, r *http.Request) {
 	utils.EnableCors(&w)
 	params := mux.Vars(r)

@@ -10,8 +10,8 @@ import { MainService } from 'src/app/services/main.service';
 })
 export class ReservationsManagementComponent implements OnInit {
   MemberId: number;
-  datesValid:boolean;
-  datesForm:FormGroup;
+  datesValid: boolean;
+  datesForm: FormGroup;
   seats1: any[]
   seats2: any[]
   seats3: any[]
@@ -29,39 +29,39 @@ export class ReservationsManagementComponent implements OnInit {
 
   checkDates() {
     this.datesForm.controls['EndDate'].value < this.datesForm.controls['StartDate'].value ? this.datesValid = false : this.datesValid = true;
-  } 
+  }
 
-  
+
   seatClicked(seat) {
     this.seatsToReserve.push(seat)
   }
 
 
-  onCancel(){
+  onCancel() {
     location.reload()
   }
 
-  onSubmit(){
+  onSubmit() {
 
 
-    console.log(this.datesForm.controls['StartDate'].value,this.datesForm.controls['EndDate'].value)
-    this.seatsToReserve.forEach(seat =>{
-      let json ={
+    console.log(this.datesForm.controls['StartDate'].value, this.datesForm.controls['EndDate'].value)
+    this.seatsToReserve.forEach(seat => {
+      let json = {
         SeatId: seat.Id,
-        UserId:this.MemberId,
+        UserId: this.MemberId,
         StartDate: this.datesForm.controls['StartDate'].value.toString(),
-        EndDate:this.datesForm.controls['EndDate'].value.toString()
+        EndDate: this.datesForm.controls['EndDate'].value.toString()
       }
-      this.mainService.addToApi(json,'api/reservations/reserve').subscribe()
+      this.mainService.addToApi(json, 'api/reservations/reserve').subscribe()
     })
   }
-  
-  
+
+
   ngOnInit(): void {
 
     this.datesForm = new FormGroup({
-      StartDate: new FormControl(null,Validators.required),
-      EndDate: new FormControl(null,Validators.required),
+      StartDate: new FormControl(null, Validators.required),
+      EndDate: new FormControl(null, Validators.required),
     })
 
     this.MemberId = parseInt(localStorage.getItem("UserId"))
@@ -174,7 +174,7 @@ export class ReservationsManagementComponent implements OnInit {
 
 
   chooseDate() {
-    this.mainService.getDataFromApi('', 'api/reservations/' + '2020-03-05' + '/' + '2020-03-10', Reservation).subscribe((reservations) => {
+    this.mainService.getDataFromApi('', 'api/reservations/getreservation/' + this.datesForm.controls['StartDate'].value + '/' + this.datesForm.controls['EndDate'].value, Reservation).subscribe((reservations) => {
       console.log(['reservations', reservations]);
       this.reservations = reservations
       this.seats1.forEach(seat => {
@@ -186,77 +186,94 @@ export class ReservationsManagementComponent implements OnInit {
       this.seats3.forEach(seat => {
         seat.reserved = false
       })
-      this.reservations.forEach(obj => {
-        if (obj.SeatId <= 9) {
-          this.seats1.forEach(seat => {
-
-            if (obj.SeatId == seat.Id) {
-              seat.reserved = true
-
-            }
-          })
-        }
-        else if (obj.SeatId > 9 && obj.SeatId <= 18) {
-          this.seats2.forEach(seat => {
-            if (obj.SeatId == seat.Id) {
-              seat.reserved = true
-            }
-          })
-        }
-        else if (obj.SeatId > 18 && obj.SeatId <= 27) {
-          this.seats2.forEach(seat => {
-            if (obj.SeatId == seat.Id) {
-              seat.reserved = true
-            }
-          })
-        }
-        else if (obj.SeatId > 27 && obj.SeatId <= 36) {
-          this.seats2.forEach(seat => {
-            if (obj.SeatId == seat.Id) {
-              seat.reserved = true
-            }
-          })
-        }
-        else if (obj.SeatId > 36 && obj.SeatId <= 45) {
-          this.seats2.forEach(seat => {
-            if (obj.SeatId == seat.Id) {
-              seat.reserved = true
-            }
-          })
-        }
-        else if (obj.SeatId > 45 && obj.SeatId <= 54) {
-          this.seats2.forEach(seat => {
-            if (obj.SeatId == seat.Id) {
-              seat.reserved = true
-            }
-          })
-        }
-        else if (obj.SeatId > 54 && obj.SeatId <= 63) {
-          this.seats2.forEach(seat => {
-            if (obj.SeatId == seat.Id) {
-              seat.reserved = true
-            }
-          })
-        }
-        else if (obj.SeatId > 63 && obj.SeatId <= 72) {
-          this.seats2.forEach(seat => {
-            if (obj.SeatId == seat.Id) {
-              seat.reserved = true
-            }
-          })
-        }
-        else if (obj.SeatId > 72 && obj.SeatId <= 81) {
-          this.seats2.forEach(seat => {
-            if (obj.SeatId == seat.Id) {
-              seat.reserved = true
-            }
-          })
-        }
-
-
+      this.seats4.forEach(seat => {
+        seat.reserved = false
       })
+      this.seats5.forEach(seat => {
+        seat.reserved = false
+      })
+      this.seats6.forEach(seat => {
+        seat.reserved = false
+      })
+      this.seats7.forEach(seat => {
+        seat.reserved = false
+      })
+      this.seats8.forEach(seat => {
+        seat.reserved = false
+      })
+      this.seats9.forEach(seat => {
+        seat.reserved = false
+      })
+      if (this.reservations) {
+        this.reservations.forEach(obj => {
+          if (obj.SeatId <= 9) {
+            this.seats1.forEach(seat => {
+
+              if (obj.SeatId == seat.Id) {
+                seat.reserved = true
+
+              }
+            })
+          }
+          else if (obj.SeatId > 9 && obj.SeatId <= 18) {
+            this.seats2.forEach(seat => {
+              if (obj.SeatId == seat.Id) {
+                seat.reserved = true
+              }
+            })
+          }
+          else if (obj.SeatId > 18 && obj.SeatId <= 27) {
+            this.seats3.forEach(seat => {
+              if (obj.SeatId == seat.Id) {
+                seat.reserved = true
+              }
+            })
+          }
+          else if (obj.SeatId > 27 && obj.SeatId <= 36) {
+            this.seats4.forEach(seat => {
+              if (obj.SeatId == seat.Id) {
+                seat.reserved = true
+              }
+            })
+          }
+          else if (obj.SeatId > 36 && obj.SeatId <= 45) {
+            this.seats5.forEach(seat => {
+              if (obj.SeatId == seat.Id) {
+                seat.reserved = true
+              }
+            })
+          }
+          else if (obj.SeatId > 45 && obj.SeatId <= 54) {
+            this.seats6.forEach(seat => {
+              if (obj.SeatId == seat.Id) {
+                seat.reserved = true
+              }
+            })
+          }
+          else if (obj.SeatId > 54 && obj.SeatId <= 63) {
+            this.seats7.forEach(seat => {
+              if (obj.SeatId == seat.Id) {
+                seat.reserved = true
+              }
+            })
+          }
+          else if (obj.SeatId > 63 && obj.SeatId <= 72) {
+            this.seats8.forEach(seat => {
+              if (obj.SeatId == seat.Id) {
+                seat.reserved = true
+              }
+            })
+          }
+          else if (obj.SeatId > 72 && obj.SeatId <= 81) {
+            this.seats9.forEach(seat => {
+              if (obj.SeatId == seat.Id) {
+                seat.reserved = true
+              }
+            })
+          }
+        })
+      }
     });
   }
-
 
 }

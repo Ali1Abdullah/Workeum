@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MemberPanelComponent } from './member-panel.component';
 import { SeatBookingComponent } from './seat-booking/seat-booking.component';
 import { EditMemberProfileComponent } from './edit-member-profile/edit-member-profile.component';
+import { ManageReservationComponent } from './manage-reservation/manage-reservation.component';
 
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [
     children: [
       { path: 'seats',  component: SeatBookingComponent },
       { path: '',  component: EditMemberProfileComponent },
+      { path: 'manage-reservation',  component: ManageReservationComponent },
     //   { path: 'add-event',  component: EventAddComponent },
     //   { path: 'messages',  component: MessagesComponent },
     //   { path: 'employee',  component: EmployeeManagementComponent },

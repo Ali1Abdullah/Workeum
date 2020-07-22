@@ -44,7 +44,7 @@ export class EditMemberProfileComponent implements OnInit {
   
       this.mainService.getOneFromApi('','api/member/'+this.MemberId,Member).subscribe(member=>{
         console.log(member)
-          this.Image ='../../../assets/members/'+ member.Image
+          this.Image ='../../../../assets/members/'+ member.Image
         let date = this.convert(member.BOD)
 
       this.memberEditForm = new FormGroup({

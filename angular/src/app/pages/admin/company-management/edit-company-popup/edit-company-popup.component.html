@@ -92,10 +92,12 @@
                             <!-- <select class="custom-select form-control" formControlName="SelectedStakeholder"  >
                         <option *ngFor="let o of StakeholderOptions;" value="{{o.StakeholderId}}" >{{o.StakeholderName}}</option>
                       </select> -->
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
-                            <option value="C">Others</option>
+                      <option value="IT & Software">IT & Software</option>
+                      <option value="Marketing">Marketing</option>
+                      <option value="Finance">Finance</option>
+                      <option value="Manufacturing">Manufacturing</option>
+                      <option value="Business Services">Business Services</option>
+                      <option value="Others">Others</option>
                         </select>
                         <span *ngIf="!companyForm.get('BusinessType').valid && companyForm.get('BusinessType').touched" class="help-block">
                             Please Choose Business Type </span>
@@ -113,7 +115,7 @@
 
             <div class="row" style="text-align: right;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: right;">
-                    <button class="btn btn-primary" style="border-radius: 5px;" [disabled]="!companyForm.valid || !Image" (click)="onSubmit()">Submit</button>
+                    <button class="btn btn-primary" style="border-radius: 5px;"    [mat-dialog-close]="true" mat-dialog-close  [disabled]="!companyForm.valid || !Image" (click)="onSubmit()">Submit</button>
                 </div>
             </div>
         </form>

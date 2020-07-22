@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl, Valid
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AuthGuardService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-employee-form',
@@ -14,7 +15,7 @@ export class EmployeeFormComponent implements OnInit {
 Image;
 uploadImage:FormGroup
 memberForm:FormGroup
-  constructor(private mainService: MainService, public formBuilder: FormBuilder,public http:HttpClient, public router: Router) { }
+  constructor(private mainService: MainService, public formBuilder: FormBuilder,public http:HttpClient, public router: Router,public authGurdService: AuthGuardService) { }
 
   public static matchValues(
     matchTo: string // name of the control to match to
@@ -78,6 +79,8 @@ memberForm:FormGroup
 
     this.mainService.addToApi(this.memberForm.value,'api/members/add').subscribe(id=>{
       localStorage.setItem("UserId",id)
+      this.authGurdService.setLoggedIn(true)
+      this.router.navigate(['/member-panel'])
         let formData = new FormData();
         formData.append("uploadFile", this.uploadImage.get("profile").value);
           return this.http.post(
@@ -87,7 +90,6 @@ memberForm:FormGroup
 
             
     })
-    this.router.navigate(['member-panel'])
-   
+
   }
 }

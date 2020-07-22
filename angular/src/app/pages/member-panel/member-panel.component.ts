@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { AuthGuardService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-member-panel',
@@ -19,7 +21,8 @@ export class MemberPanelComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+   
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher ,private authGurdService: AuthGuardService,private router: Router) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -35,6 +38,12 @@ export class MemberPanelComponent implements OnInit {
   //to scroll to top of pages when navigating between routes
   onActivate(event) {
     window.scroll(0,0);
+  }
+
+  onLogout(){
+    this.authGurdService.setLoggedIn(false)
+    localStorage.setItem("UserId",null)
+    this.router.navigate([''])
   }
 
 }

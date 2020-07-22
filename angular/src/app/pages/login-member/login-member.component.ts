@@ -47,7 +47,7 @@ export class LoginMemberComponent implements OnInit {
         //if data given are false
         this.checkedFalse = true;
         this.authGurdService.setLoggedIn(false)
-        this.router.navigate(['/login-member'])
+        this.router.navigate([''])
       }
 
     });

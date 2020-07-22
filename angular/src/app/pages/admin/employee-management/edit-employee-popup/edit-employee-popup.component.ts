@@ -3,7 +3,8 @@ import { FormControl, FormGroup, Validators, AbstractControl, ValidationErrors, 
 import { MainService } from 'src/app/services/main.service';
 import { HttpClient } from '@angular/common/http';
 import { Member } from 'src/app/models/member.model';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import  { CofirmEditEmployeePopupComponent } from './cofirm-edit-employee-popup/cofirm-edit-employee-popup.component'
 
 @Component({
   selector: 'app-edit-employee-popup',
@@ -17,7 +18,7 @@ export class EditEmployeePopupComponent implements OnInit {
   memberEditForm:FormGroup
   MemberId:number;
   ImageChanged: boolean = false;
-    constructor(private mainService: MainService, public formBuilder: FormBuilder,public http:HttpClient,
+    constructor(private mainService: MainService, public formBuilder: FormBuilder,public http:HttpClient,public dialog: MatDialog,
       @Inject(MAT_DIALOG_DATA) public data: any) { }
   
     public static matchValues(
@@ -94,7 +95,11 @@ export class EditEmployeePopupComponent implements OnInit {
           let formData = new FormData();
           formData.append("uploadFile", this.uploadImage.get("profile").value);
             return this.http.post(
-              'http://localhost:3001/api/member/image/' + this.MemberId,formData).subscribe()   
+              'http://localhost:3001/api/member/image/' + this.MemberId,formData).subscribe(
+                
+              )   
         }
+
+        this.dialog.open(CofirmEditEmployeePopupComponent)
     }
   }

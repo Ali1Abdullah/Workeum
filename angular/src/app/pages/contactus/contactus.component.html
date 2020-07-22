@@ -44,7 +44,7 @@
                     <textarea formControlName="Content" style=" margin:0 auto; width: 80%;height: 180px;resize: none;padding: 10px;" placeholder="Enter Your Message" id="content"></textarea>
                 </div>
                 <div class="row" style="margin-top: 20px;">
-                    <button class="btn btn-primary" style="border-radius: 15px;margin:0 auto;" (click)="onSubmit()">Submit</button>
+                    <button class="btn btn-primary" style="border-radius: 15px;margin:0 auto;" (click)="onSubmit()" [disabled]="!contactForm.valid">Submit</button>
                 </div>
 
 

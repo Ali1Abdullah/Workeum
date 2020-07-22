@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
 import { HttpClient } from '@angular/common/http';
+import { AddPopupComponent } from './add-popup/add-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-event-add',
@@ -28,6 +30,7 @@ export class EventAddComponent implements OnInit {
     private http: HttpClient,
     private mainService: MainService,
     private formBuilder: FormBuilder,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -101,5 +104,7 @@ export class EventAddComponent implements OnInit {
       return this.http.post(
         'http://localhost:3001/api/events/image/' + parseInt(num), formData).subscribe()
     })
+
+    this.dialog.open(AddPopupComponent)
   }
 }

@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Event } from 'src/app/models/event.model';
+import { CofirmEditEmployeePopupComponent } from '../../employee-management/edit-employee-popup/cofirm-edit-employee-popup/cofirm-edit-employee-popup.component';
+import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-event-management-popup',
   templateUrl: './event-management-popup.component.html',
@@ -36,6 +38,7 @@ export class EventManagementPopupComponent implements OnInit {
     private http: HttpClient,
     private mainService: MainService,
     private formBuilder: FormBuilder,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -124,9 +127,8 @@ export class EventManagementPopupComponent implements OnInit {
     this.mainService.updateItemInApi(this.eventForm.value, 'api/events/edit/'+ this.data.event).subscribe()
       let formData = new FormData();
       formData.append("uploadFile", this.uploadForm.get("profile").value);
-      return this.http.post(
-        'http://localhost:3001/api/events/image/' + this.data.event, formData).subscribe()
-    
+      this.http.post('http://localhost:3001/api/events/image/' + this.data.event, formData).subscribe()
+     this.dialog.open(CofirmEditEmployeePopupComponent)
   }
 
   

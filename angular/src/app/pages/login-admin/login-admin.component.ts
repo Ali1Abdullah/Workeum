@@ -45,7 +45,7 @@ export class LoginAdminComponent implements OnInit {
         //if data given are false
         this.checkedFalse = true;
         this.authGurdService.setLoggedIn(false)
-        this.router.navigate(['/login-admin'])
+        this.router.navigate([''])
       }
 
     });
