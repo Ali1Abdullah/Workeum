@@ -6,6 +6,7 @@ import { MainService } from 'src/app/services/main.service';
 import { Member } from 'src/app/models/member.model';
 import { MatDialog } from '@angular/material/dialog';
 import { EditEmployeePopupComponent } from './edit-employee-popup/edit-employee-popup.component';
+import { HttpService } from 'src/app/services/http.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { EditEmployeePopupComponent } from './edit-employee-popup/edit-employee-
 })
 export class EmployeeManagementComponent implements OnInit {
 
-  constructor(public mainService: MainService, public dialog: MatDialog ){}
+  constructor(public mainService: MainService, public dialog: MatDialog,public httpService: HttpService ){}
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('MatPaginator', { static: true }) paginator: MatPaginator;
   displayedColumns: string[] = ['Image', 'Name', 'CompanyName', 'Position','Email', 'Phone','Actions'];
@@ -28,6 +29,7 @@ export class EmployeeManagementComponent implements OnInit {
   }
   ngOnInit(){
     this.mainService.getDataFromApi('','api/members',Member).subscribe(data=>{
+      
       data.forEach(member => {
         member.Image ='../../../assets/members/'+ member.Image
       });

@@ -80,11 +80,14 @@ memberForm:FormGroup
     this.mainService.addToApi(this.memberForm.value,'api/members/add').subscribe(id=>{
       localStorage.setItem("UserId",id)
       this.authGurdService.setLoggedIn(true)
-      this.router.navigate(['/member-panel'])
+   
         let formData = new FormData();
         formData.append("uploadFile", this.uploadImage.get("profile").value);
           return this.http.post(
-            'http://localhost:3001/api/member/image/' + parseInt(id),formData).subscribe(
+            'http://localhost:3001/api/member/image/' + parseInt(id),formData).subscribe(()=>{
+              this.router.navigate(['/member-panel'])
+            }
+              
             )   
     
 

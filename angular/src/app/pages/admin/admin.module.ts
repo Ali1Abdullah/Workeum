@@ -18,10 +18,11 @@ import { EditCompanyPopupComponent } from './company-management/edit-company-pop
 import { ReservationsManagementComponent } from './reservations-management/reservations-management.component';
 import { CofirmEditEmployeePopupComponent } from './employee-management/edit-employee-popup/cofirm-edit-employee-popup/cofirm-edit-employee-popup.component';
 import { AddPopupComponent } from './event-add/add-popup/add-popup.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { PopupReservationComponent } from './reservations-management/popup-reservation/popup-reservation.component';
 
 @NgModule({
-  declarations: [AdminComponent, EventManagementComponent, MessagesComponent, EventManagementPopupComponent, EventAddComponent, EmployeeManagementComponent, CompanyManagementComponent, EditEmployeePopupComponent, EditCompanyPopupComponent, ReservationsManagementComponent, CofirmEditEmployeePopupComponent, AddPopupComponent],
+  declarations: [AdminComponent, EventManagementComponent, MessagesComponent, EventManagementPopupComponent, EventAddComponent, EmployeeManagementComponent, CompanyManagementComponent, EditEmployeePopupComponent, EditCompanyPopupComponent, ReservationsManagementComponent, CofirmEditEmployeePopupComponent, AddPopupComponent, PopupReservationComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -31,8 +32,9 @@ import { AddPopupComponent } from './event-add/add-popup/add-popup.component';
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MaterialModule
+    MaterialModule,
+    MatTooltipModule
   ],
-  entryComponents:[EventManagementPopupComponent,EditEmployeePopupComponent,EditCompanyPopupComponent,CofirmEditEmployeePopupComponent, AddPopupComponent]
+  entryComponents: [PopupReservationComponent ,EventManagementPopupComponent, EditEmployeePopupComponent, EditCompanyPopupComponent, CofirmEditEmployeePopupComponent, AddPopupComponent]
 })
 export class AdminModule { }

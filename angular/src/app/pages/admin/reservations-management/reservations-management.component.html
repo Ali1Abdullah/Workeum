@@ -40,7 +40,8 @@
             <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
                 style="margin: 0 auto;margin-top: 20px;">
                 <mat-button-toggle *ngFor="let seat of seats1" value="{{seat.Id}}" style="width:100%">
-                    <button disabled *ngIf="seat.reserved"
+                    <button  *ngIf="seat.reserved" mat-raised-button (click)="onReservedSeatClick(seat.userId)"
+                    matTooltip="Reserved by User with Id: {{seat.userId}}"
                         style="border: none;background-color: #ce0200;padding: 15px;">
                         <p>{{seat.SeatNumber}}</p>
                         <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
@@ -60,7 +61,8 @@
             <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
                 style="margin: 0 auto;margin-top: 20px;">
                 <mat-button-toggle *ngFor="let seat of seats2" value="{{seat.Id}}" style="width:100%">
-                    <button disabled *ngIf="seat.reserved"
+                    <button  *ngIf="seat.reserved" mat-raised-button (click)="onReservedSeatClick(seat.userId)"
+                    matTooltip="Reserved by User with Id: {{seat.userId}}"
                         style="border: none;background-color: #ce0200;padding: 15px;">
                         <p>{{seat.SeatNumber}}</p>
                         <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
@@ -83,7 +85,8 @@
             <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
                 style="margin: 0 auto;margin-top: 20px;">
                 <mat-button-toggle *ngFor="let seat of seats3" value="{{seat.Id}}" style="width:100%">
-                    <button disabled *ngIf="seat.reserved"
+                    <button  *ngIf="seat.reserved" mat-raised-button (click)="onReservedSeatClick(seat.userId)"
+                    matTooltip="Reserved by User with Id: {{seat.userId}}"
                         style="border: none;background-color: #ce0200;padding: 15px;">
                         <p>{{seat.SeatNumber}}</p>
                         <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
@@ -104,7 +107,8 @@
             <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
                 style="margin: 0 auto;margin-top: 20px;">
                 <mat-button-toggle *ngFor="let seat of seats4" value="{{seat.Id}}" style="width:100%">
-                    <button disabled *ngIf="seat.reserved"
+                    <button  *ngIf="seat.reserved" mat-raised-button (click)="onReservedSeatClick(seat.userId)"
+                    matTooltip="Reserved by User with Id: {{seat.userId}}"
                         style="border: none;background-color: #ce0200;padding: 15px;">
                         <p>{{seat.SeatNumber}}</p>
                         <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
@@ -124,7 +128,8 @@
             <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
                 style="margin: 0 auto;margin-top: 20px;">
                 <mat-button-toggle *ngFor="let seat of seats5" value="{{seat.Id}}" style="width:100%">
-                    <button disabled *ngIf="seat.reserved"
+                    <button  *ngIf="seat.reserved" mat-raised-button (click)="onReservedSeatClick(seat.userId)"
+                    matTooltip="Reserved by User with Id: {{seat.userId}}"
                         style="border: none;background-color: #ce0200;padding: 15px;">
                         <p>{{seat.SeatNumber}}</p>
                         <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
@@ -147,7 +152,8 @@
             <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
                 style="margin: 0 auto;margin-top: 20px;">
                 <mat-button-toggle *ngFor="let seat of seats6" value="{{seat.Id}}" style="width:100%">
-                    <button disabled *ngIf="seat.reserved"
+                    <button  *ngIf="seat.reserved" mat-raised-button (click)="onReservedSeatClick(seat.userId)"
+                    matTooltip="Reserved by User with Id: {{seat.userId}}"
                         style="border: none;background-color: #ce0200;padding: 15px;">
                         <p>{{seat.SeatNumber}}</p>
                         <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
@@ -168,7 +174,8 @@
             <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
                 style="margin: 0 auto;margin-top: 20px;">
                 <mat-button-toggle *ngFor="let seat of seats7" value="{{seat.Id}}" style="width:100%">
-                    <button disabled *ngIf="seat.reserved"
+                    <button  *ngIf="seat.reserved" mat-raised-button (click)="onReservedSeatClick(seat.userId)"
+                    matTooltip="Reserved by User with Id: {{seat.userId}}"
                         style="border: none;background-color: #ce0200;padding: 15px;">
                         <p>{{seat.SeatNumber}}</p>
                         <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
@@ -188,7 +195,8 @@
             <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
                 style="margin: 0 auto;margin-top: 20px;">
                 <mat-button-toggle *ngFor="let seat of seats8" value="{{seat.Id}}" style="width:100%">
-                    <button disabled *ngIf="seat.reserved"
+                    <button  *ngIf="seat.reserved" mat-raised-button (click)="onReservedSeatClick(seat.userId)"
+                    matTooltip="Reserved by User with Id: {{seat.userId}}"
                         style="border: none;background-color: #ce0200;padding: 15px;">
                         <p>{{seat.SeatNumber}}</p>
                         <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>
@@ -211,7 +219,8 @@
             <mat-button-toggle-group multiple="true" name="fontStyle" aria-label="Font Style"
                 style="margin: 0 auto;margin-top: 20px;">
                 <mat-button-toggle *ngFor="let seat of seats9" value="{{seat.Id}}" style="width:100%">
-                    <button disabled *ngIf="seat.reserved"
+                    <button  *ngIf="seat.reserved" mat-raised-button (click)="onReservedSeatClick(seat.userId)"
+                    matTooltip="Reserved by User with Id: {{seat.userId}}"
                         style="border: none;background-color: #ce0200;padding: 15px;">
                         <p>{{seat.SeatNumber}}</p>
                         <p style="color: #000;font-family:  MuseoSans_300;">Reserved</p>

@@ -20,6 +20,7 @@ today=  new Date().toJSON().split('T')[0];
     this.mainService.getDataFromApi('', 'api/reservations-user/' + localStorage.getItem("UserId") ,Reservation).subscribe((reservations) => {
       this.reservations = reservations;
       console.log("today", this.today)
+      if(this.reservations){
       this.reservations.forEach(rsrv=>{
         if(rsrv.StartDate.split('T')[0] < this.today){
           console.log(rsrv.StartDate.split('T')[0])
@@ -28,6 +29,7 @@ today=  new Date().toJSON().split('T')[0];
           this.FutureReservations.push(rsrv)
         }
       })
+    }
       console.log("Past", this.pastReservations)
       console.log("Future", this.FutureReservations)
     })
